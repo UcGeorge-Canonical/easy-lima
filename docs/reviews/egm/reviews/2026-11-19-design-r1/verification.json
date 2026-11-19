@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-19",
+  "status": "passed",
+  "checks": "Documentation and review-evidence consistency only",
+  "native_reviewer_completions_observed": 9,
+  "read_acknowledgments": 9,
+  "failed_or_not_run_reviewers": 0,
+  "fresh_context_parameter": "fork_turns=none on each native spawn",
+  "instruction_file_isolation_verified": false,
+  "frozen_input_hashes_verified": 6,
+  "protected_concept_history_hashes_verified": 16,
+  "raw_findings_traced": 28,
+  "consolidated_actions": 19,
+  "working_documents_checked": 6,
+  "local_links_checked": 143,
+  "tables_checked": 38,
+  "applied_document_corrections": 6,
+  "corrections_independently_reaudited": false,
+  "runtime_tests_executed": false,
+  "production_files_created_or_changed": false,
+  "live_resources_changed": false,
+  "errors": []
+}

@@ -1,0 +1,26 @@
+{
+  "finding": "ELD-01",
+  "date": "2026-11-19",
+  "status": "applied_to_design",
+  "author": "George Uche-Umeh",
+  "user_reply": "Yes",
+  "approved_rule": "An SSH-key change includes every VM using the profile. A subset needing a different key uses a separate profile.",
+  "internal_mechanisms": "Committed profile credential plus per-VM revisions; all-member admission; forwarding barrier; durable completion handoffs; stopped VMs remain stopped with approved pending targets.",
+  "files": [
+    "PROFILE_TRANSITIONS.md",
+    "design_draft.md",
+    "UX_PROPOSAL.md",
+    "FEATURES.md",
+    "concepts_brief.md",
+    "README.md",
+    "consolidated_review_report.md"
+  ],
+  "independent_reaudit": "pending",
+  "runtime_validation": "not_run",
+  "next_user_facing_finding": "ELD-02",
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 11,
+    "Nit": 1
+  }
+}

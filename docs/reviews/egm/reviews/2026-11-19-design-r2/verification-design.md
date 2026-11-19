@@ -1,0 +1,8 @@
+**Pass for both corrections.** No concrete residual within the requested scope.
+
+- **R2-DESIGN-01 — closed at design level.** Historical connections now reference the immutable registration ID and their original profile/revisions independently of current membership. Retirement preserves those references. Selected, applied and pending identity are separately represented, including explicit profile-free cleanup. Assign/unassign preserves old evidence, gates connections before revocation, commits membership with a durable continuation, and clears the gate only after verification. See current `STATE_CONTRACT.md` lines 21–30 and 54–66; `PROFILE_TRANSITIONS.md` lines 90–106.
+- **R2-DESIGN-02 — closed at design level.** The finalization event is fixed and journaled before writable opening. Recovery now explicitly permits: committing that same event from the exact before-generation; completing its pending local/namespace publication from the exact after-generation; and removing a remaining fence from the verified state. Legitimate candidate-local WAL/SHM changes no longer require pre-write physical hashes. Unexpected lineage remains refused, and interrupted cleanup cannot allocate another event. See current `STATE_CONTRACT.md` lines 139–155, with publication continuations at lines 105–121. `TECHNICAL_DETAILS.md` line 805 consistently adopts these phase-specific rules.
+
+Read-completion evidence: current root `STATE_CONTRACT.md` lines 1–161, `PROFILE_TRANSITIONS.md` lines 1–122, and `TECHNICAL_DETAILS.md` T12 lines 781–812.
+
+Read-only document verification only; no tests, writes, live-state inspection, or runtime validation. This is focused verification by the original reviewer, not a new fresh-context review round.

@@ -1,0 +1,18 @@
+#compdef easy-lima
+local -a commands
+commands=(init up start stop restart code ssh exec list inspect doctor logs forward environment rebind adopt delete profile operations repair state config storage version)
+if (( CURRENT == 2 )); then
+    _describe 'command' commands
+elif (( CURRENT == 3 )); then
+    case $words[2] in
+        profile) compadd list show check create import edit apply assign unassign migrate-agent unlock lock forget remove ;;
+        operations) compadd list inspect resume ;;
+        environment) compadd update ;;
+        state) compadd backup restore migrate checkpoint inventory ;;
+        config) compadd explain ;;
+        storage) compadd inspect ;;
+        *) _files -/ ;;
+    esac
+else
+    _arguments '--help[Show command help]' '--json[Versioned metadata JSON]' '--dry-run[Preview effects]' '--yes[Accept the displayed scope]' '--vm[VM ID]:ID:' '--profile[Profile label]:label:' '--config[User TOML]:file:_files' '*:path:_files'
+fi

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "url": "https://download.docker.com/linux/ubuntu/dists/noble/stable/binary-arm64/Packages.gz",
+      "sha256": "daeb52b80856d1429a0d96e7480a9f0308542f538764d157a8512a7417c58d9a"
+    },
+    {
+      "url": "https://api.snapcraft.io/v2/snaps/info/lxd",
+      "architecture": "arm64",
+      "sha256": "7c7283c359940c1b5c0db1e876e4e3f4827bc6dbe2db0d7d1e78934f53517b04"
+    },
+    {
+      "url": "https://api.snapcraft.io/v2/snaps/info/juju",
+      "architecture": "arm64",
+      "sha256": "bb53fae68820192472b1cf639afcf20ed77adb517a814199f3f03fe7e24ebf75"
+    },
+    {
+      "url": "https://download.docker.com/linux/ubuntu/dists/noble/stable/binary-amd64/Packages.gz",
+      "sha256": "e546e124c881610e9a9bd2ac24bd30bcb52e119da653aec61c91acaa438c032e"
+    },
+    {
+      "url": "https://api.snapcraft.io/v2/snaps/info/lxd",
+      "architecture": "amd64",
+      "sha256": "7c7283c359940c1b5c0db1e876e4e3f4827bc6dbe2db0d7d1e78934f53517b04"
+    },
+    {
+      "url": "https://api.snapcraft.io/v2/snaps/info/juju",
+      "architecture": "amd64",
+      "sha256": "bb53fae68820192472b1cf639afcf20ed77adb517a814199f3f03fe7e24ebf75"
+    }
+  ]
+}

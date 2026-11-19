@@ -1,0 +1,51 @@
+{
+  "verified_at_utc": "2026-11-18T19:54:44.574471+00:00",
+  "status": "passed",
+  "hash_checks": {
+    "inputs": {
+      "count": 2,
+      "changed": []
+    },
+    "source_evidence": {
+      "count": 13,
+      "changed": []
+    }
+  },
+  "reviewer_statuses": {
+    "egm-design": "completed",
+    "egm-codebase-details": "completed",
+    "egm-zoom-out": "completed",
+    "egm-comprehension": "completed",
+    "egm-implementation-readiness": "completed",
+    "egm-structural": "completed"
+  },
+  "raw_reports": 6,
+  "raw_findings_mapped_exactly_once": 21,
+  "consolidated_findings": 11,
+  "severity_totals": {
+    "Blocker": 0,
+    "Major": 10,
+    "Nit": 1
+  },
+  "local_links_checked": 209,
+  "features_status_only_changed_lines": [
+    5,
+    152,
+    158
+  ],
+  "failures": [],
+  "limitations": "Static artifact validation only. Reviewer file reads remain self-reported; native child read traces are unavailable. No runtime tests or VM operations were performed.",
+  "artifact_sha256": {
+    "/Volumes/Nebula/dev/Canonical/local/goldfish_review_report.md": "8c4e073225d484293dc031c98fbc8900af4e7bb0b8e9d832c80c566bf54024fa",
+    "/Volumes/Nebula/dev/Canonical/local/concepts_brief.md": "29bd171a9c0eb0938f91ffa7d78e9c433d988117bfb3c33bd97cd09a1b49ee0a",
+    "/Volumes/Nebula/dev/Canonical/local/FEATURES.md": "5308fb23be736def4ffeb3accd98a106dddb701b0e58116ea8c33dd55fc04182",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-codebase-details.md": "aca31506402d0a3dbf812d277e3032cb84a4f4c1338e934d429a92832697605b",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-comprehension.md": "d182a5c8084d3767cfadd68225065f600780d66ad273daf2577cc71c25ce2439",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-design.md": "d6c89ad1584cdfd0639b32d1295c78b26ac48d1c352f8d6cd0432a9df7e7ef7b",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-implementation-readiness.md": "401fcda51e2ded797f3b09fbbb4feef69fecf39cd99f83f6769db03a328bf2a1",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-structural.md": "6de1c61d42063b4b2033668c9ec2619283a264b35a80c3753173b5da3f0101b6",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-zoom-out.md": "d90eb7b9c34d76334bbba2b0c8956bbdd53ee95eef57b79592c442075a872775",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/dispatch-details.json": "b30a22960dc92a15b801d4f8ac7f7882cfb0ad6edf7b048a815edf571a076587",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/triage.json": "e77574da06383c2308d191f068fdbde02632c4b9bdf366df3c80c3a49682eace"
+  }
+}

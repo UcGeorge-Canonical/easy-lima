@@ -1,0 +1,80 @@
+{
+  "review_id": "2026-11-19-design-r2",
+  "date": "2026-11-19",
+  "status": "completed_resolved",
+  "mode": "targeted_final_reaudit",
+  "authority": "Author approved the exact interface and announced final design re-review; internal workflow choices delegated.",
+  "target": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/design_draft.md",
+  "feature_range": [
+    1,
+    255
+  ],
+  "detailed_range": [
+    256,
+    374
+  ],
+  "input_hashes": {
+    "ADOPTED_AGENTS.md": "73f7beb2e7db3f19307ab24b9f18959f2175a9d11b79aa29ab928e0b581fe9cf",
+    "ADOPTION.md": "0afdef4f3d5342cc28f39e38c9f59e16348c69947caa20bb40710d135e82d3ba",
+    "DECISIONS.md": "0629d3e28ede2a90f7bd00b00c0e13124b2beb35dbf02af229c4f0e3d7beb31e",
+    "FEATURES.md": "38f6c5f7ee42a68b45a23c46abc9f16325d255244b162f57d1a1169fe47e805d",
+    "INTERFACE_V1.md": "a2c2e546d06d36f16167856334f257ede20f62949eb4609612e01e0c894d088b",
+    "LIMA_BOUNDARIES.md": "df5adf174409bd9f653fd3c9d295b323dfc3e1a3e33d55ebfcaf095a2a017079",
+    "PROFILE_TRANSITIONS.md": "2d451ca291839816523c290a3f0b101ee32ca2ee16d7f4a82a9f312fc73636f1",
+    "PROVISIONING.md": "0ca7983d94a72c4b26c9dbcd004bb50170767fc8a442dce9c31a3858c20c83a1",
+    "README.md": "dcb535a79337cefd03de37efa479a69ea53332d916bcad04dbb8878f177fbcde",
+    "STATE_CONTRACT.md": "10380add949cde7d0309e92d77dbb3502711949da403f620ffefc44273d84957",
+    "TECHNICAL_DETAILS.md": "b3975c12fb1b42afd103a976bb09f320065c22b4224c34c56c8c8a68d88d3a18",
+    "UX_PROPOSAL.md": "79225f51658ad9915de1a334de1ec883e61fdb7f484b38a267313580bf82f488",
+    "concepts_brief.md": "040baa683fc93ecfcd160f1cb2cb67a6a7976731a8c82cc017b675b158e414d8",
+    "design_draft.md": "a27b868d9ecad59dfe1cf9ce8eb28fa1b0e126f7838687f56c6d363deb33377e",
+    "consolidated_review_report.md": "5cd7f9f5367f38092c10200ff590706147b4cb29d7596b15d3e2423a707737af",
+    "goldfish_review_report.md": "2f1f27b8e3113aaa0f03eb16fcbe4db9b0e29d8be661006cb75f1cec3a6e2a2f"
+  },
+  "context": [
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/ADOPTED_AGENTS.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/ADOPTION.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/DECISIONS.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/FEATURES.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/INTERFACE_V1.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/LIMA_BOUNDARIES.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/PROFILE_TRANSITIONS.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/PROVISIONING.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/README.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/STATE_CONTRACT.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/TECHNICAL_DETAILS.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/UX_PROPOSAL.md",
+    "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r2/inputs/concepts_brief.md"
+  ],
+  "reviewers": [
+    "egm-design",
+    "egm-implementation-readiness",
+    "egm-codebase-details",
+    "egm-style"
+  ],
+  "fresh_context": "fork_turns=none; filesystem and instruction-file isolation not asserted",
+  "full_five_stage_review": false,
+  "external_references": "Existing inline primary references are not bulk-loaded. Reviewers may verify concrete technical claims against primary sources. Prototype source scope remains read-only and explicitly limited.",
+  "runtime_validated": false,
+  "converged": false,
+  "reviewer_runs_completed": 4,
+  "raw_counts": {
+    "Blocker": 0,
+    "Major": 5,
+    "Nit": 0
+  },
+  "consolidated_counts": {
+    "Blocker": 0,
+    "Major": 4,
+    "Nit": 0
+  },
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 0,
+    "Nit": 0
+  },
+  "applied_corrections": 4,
+  "focused_correction_verification": "completed",
+  "clean_round_before_fixes": false,
+  "report": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/consolidated_review_report.md"
+}

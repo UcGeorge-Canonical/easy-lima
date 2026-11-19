@@ -1,0 +1,80 @@
+{
+  "status": "resolved",
+  "actions": [
+    {
+      "id": "ELR-01",
+      "severity": "Major",
+      "raw": [
+        "R2-DESIGN-01",
+        "R2-READY-01"
+      ],
+      "title": "Represent cross-profile and profile-free transitions without changing history",
+      "disposition": "PROPOSE FIX",
+      "authority": "Delegated internal schema/protocol correction; public behavior preserved",
+      "status": "applied_verified",
+      "verification": [
+        "verification-design.md",
+        "verification-readiness.md"
+      ]
+    },
+    {
+      "id": "ELR-02",
+      "severity": "Major",
+      "raw": [
+        "R2-DESIGN-02"
+      ],
+      "title": "Reconcile post-install restore generations through the swap fence",
+      "disposition": "PROPOSE FIX",
+      "authority": "Delegated internal recovery correction",
+      "status": "applied_verified",
+      "verification": [
+        "verification-design.md"
+      ]
+    },
+    {
+      "id": "ELR-03",
+      "severity": "Major",
+      "raw": [
+        "R2-CODE-01"
+      ],
+      "title": "Complete legacy ROOT and script fixture boundaries",
+      "disposition": "PROPOSE FIX",
+      "authority": "Delegated internal test-contract correction",
+      "status": "applied_verified",
+      "verification": [
+        "verification-codebase.md"
+      ]
+    },
+    {
+      "id": "ELR-04",
+      "severity": "Major",
+      "raw": [
+        "R2-STYLE-01"
+      ],
+      "title": "Synchronize exact-interface approval authority",
+      "disposition": "PROPOSE FIX",
+      "authority": "Record the already-granted author approval; no new decision",
+      "status": "applied_verified",
+      "verification": [
+        "verification-style.md"
+      ]
+    }
+  ],
+  "pending_reviewers": [],
+  "raw_counts": {
+    "Blocker": 0,
+    "Major": 5,
+    "Nit": 0
+  },
+  "consolidated_counts": {
+    "Blocker": 0,
+    "Major": 4,
+    "Nit": 0
+  },
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 0,
+    "Nit": 0
+  },
+  "applied_count": 4
+}

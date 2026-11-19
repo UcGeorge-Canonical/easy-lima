@@ -1,0 +1,264 @@
+{
+  "status": "complete",
+  "raw_counts": {
+    "Blocker": 0,
+    "Major": 22,
+    "Nit": 6
+  },
+  "findings": [
+    {
+      "raw_id": "S5-ZOOM-01",
+      "severity": "Major",
+      "title": "A shared profile agent cannot support independently applied credential revisions",
+      "report": "raw/stage5-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-01"
+      ]
+    },
+    {
+      "raw_id": "S5-ZOOM-02",
+      "severity": "Major",
+      "title": "External legacy agents cannot inherit the managed profile-lock contract",
+      "report": "raw/stage5-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-02"
+      ]
+    },
+    {
+      "raw_id": "S5-ZOOM-03",
+      "severity": "Nit",
+      "title": "Implementation mechanics obscure the high-level architecture",
+      "report": "raw/stage5-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-15"
+      ]
+    },
+    {
+      "raw_id": "S7-DESIGN-01",
+      "severity": "Major",
+      "title": "Freeze Lima\u2019s namespace-wide configuration as an input to every managed start",
+      "report": "raw/stage7-design.md",
+      "consolidated_ids": [
+        "ELD-03"
+      ]
+    },
+    {
+      "raw_id": "S7-DESIGN-02",
+      "severity": "Major",
+      "title": "Specify VM host-key enrollment and effective SSH verification",
+      "report": "raw/stage7-design.md",
+      "consolidated_ids": [
+        "ELD-04"
+      ]
+    },
+    {
+      "raw_id": "S7-DESIGN-03",
+      "severity": "Major",
+      "title": "Define lock behavior for externally managed adopted agents",
+      "report": "raw/stage7-design.md",
+      "consolidated_ids": [
+        "ELD-02"
+      ]
+    },
+    {
+      "raw_id": "S7-DESIGN-04",
+      "severity": "Major",
+      "title": "Disable Lima\u2019s implicit port-forwarding fallback",
+      "report": "raw/stage7-design.md",
+      "consolidated_ids": [
+        "ELD-05"
+      ]
+    },
+    {
+      "raw_id": "S7-STYLE-01",
+      "severity": "Major",
+      "title": "Verification timing creates a circular approval gate",
+      "report": "raw/stage7-style.md",
+      "consolidated_ids": [
+        "ELD-06"
+      ]
+    },
+    {
+      "raw_id": "S7-STYLE-02",
+      "severity": "Major",
+      "title": "Approved GitHub transport behavior remains optional in the technical contract",
+      "report": "raw/stage7-style.md",
+      "consolidated_ids": [
+        "ELD-07"
+      ]
+    },
+    {
+      "raw_id": "S7-STYLE-03",
+      "severity": "Nit",
+      "title": "\u201cTested guest\u201d exceeds the document\u2019s evidence",
+      "report": "raw/stage7-style.md",
+      "consolidated_ids": [
+        "ELD-16"
+      ]
+    },
+    {
+      "raw_id": "S7-STYLE-04",
+      "severity": "Nit",
+      "title": "The alternatives summary overstates SQLite\u2019s necessity",
+      "report": "raw/stage7-style.md",
+      "consolidated_ids": [
+        "ELD-17"
+      ]
+    },
+    {
+      "raw_id": "S7-STYLE-05",
+      "severity": "Nit",
+      "title": "Repeated global execution disclaimers obscure local qualification requirements",
+      "report": "raw/stage7-style.md",
+      "consolidated_ids": [
+        "ELD-18"
+      ]
+    },
+    {
+      "raw_id": "S8-ZOOM-01",
+      "severity": "Major",
+      "title": "Make the shared agent determine credential-change scope",
+      "report": "raw/stage8-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-01"
+      ]
+    },
+    {
+      "raw_id": "S8-ZOOM-02",
+      "severity": "Major",
+      "title": "External profile resources need an explicit capability boundary",
+      "report": "raw/stage8-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-02"
+      ]
+    },
+    {
+      "raw_id": "S8-ZOOM-03",
+      "severity": "Major",
+      "title": "Enforce one effective Lima configuration contract across lifecycle operations",
+      "report": "raw/stage8-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-03",
+        "ELD-05"
+      ]
+    },
+    {
+      "raw_id": "S8-ZOOM-04",
+      "severity": "Major",
+      "title": "Give all managed connections one VM trust contract",
+      "report": "raw/stage8-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-04"
+      ]
+    },
+    {
+      "raw_id": "S8-ZOOM-05",
+      "severity": "Nit",
+      "title": "Separate architectural decisions from implementation recipes",
+      "report": "raw/stage8-zoom-out.md",
+      "consolidated_ids": [
+        "ELD-15",
+        "ELD-18"
+      ]
+    },
+    {
+      "raw_id": "S9-CODE-01",
+      "severity": "Major",
+      "title": "Adoption needs a legacy-work quiescence check before transferring ownership.",
+      "report": "raw/stage9-codebase.md",
+      "consolidated_ids": [
+        "ELD-08"
+      ]
+    },
+    {
+      "raw_id": "S9-CODE-02",
+      "severity": "Major",
+      "title": "Preserved shared legacy agents cannot implement the stated profile-lock behavior.",
+      "report": "raw/stage9-codebase.md",
+      "consolidated_ids": [
+        "ELD-02"
+      ]
+    },
+    {
+      "raw_id": "S9-CODE-03",
+      "severity": "Major",
+      "title": "The development/Docker split omits an existing networking dependency and its acceptance coverage.",
+      "report": "raw/stage9-codebase.md",
+      "consolidated_ids": [
+        "ELD-09"
+      ]
+    },
+    {
+      "raw_id": "S9-CODE-04",
+      "severity": "Major",
+      "title": "The legacy ownership contract test lacks a specified executable fixture and harness.",
+      "report": "raw/stage9-codebase.md",
+      "consolidated_ids": [
+        "ELD-10"
+      ]
+    },
+    {
+      "raw_id": "S9-READY-01",
+      "severity": "Major",
+      "title": "Configuration and command inputs still require interface design",
+      "report": "raw/stage9-readiness.md",
+      "consolidated_ids": [
+        "ELD-11"
+      ]
+    },
+    {
+      "raw_id": "S9-READY-02",
+      "severity": "Major",
+      "title": "Script-facing result contracts stop at the JSON envelope",
+      "report": "raw/stage9-readiness.md",
+      "consolidated_ids": [
+        "ELD-12"
+      ]
+    },
+    {
+      "raw_id": "S9-READY-03",
+      "severity": "Major",
+      "title": "Authoritative state and ownership-publication contracts remain incomplete",
+      "report": "raw/stage9-readiness.md",
+      "consolidated_ids": [
+        "ELD-13"
+      ]
+    },
+    {
+      "raw_id": "S9-READY-04",
+      "severity": "Major",
+      "title": "Provisioning stages lack the concrete evidence contracts required by the coordinator",
+      "report": "raw/stage9-readiness.md",
+      "consolidated_ids": [
+        "ELD-14"
+      ]
+    },
+    {
+      "raw_id": "S9-READY-05",
+      "severity": "Major",
+      "title": "Applying profile revisions across several VMs lacks a complete transition policy",
+      "report": "raw/stage9-readiness.md",
+      "consolidated_ids": [
+        "ELD-01"
+      ]
+    },
+    {
+      "raw_id": "S9-STYLE-01",
+      "severity": "Major",
+      "title": "Separate the design-review prerequisite from release review",
+      "report": "raw/stage9-style.md",
+      "consolidated_ids": [
+        "ELD-06"
+      ]
+    },
+    {
+      "raw_id": "S9-STYLE-02",
+      "severity": "Nit",
+      "title": "Preserve the bounded logging guarantee in the worklist",
+      "report": "raw/stage9-style.md",
+      "consolidated_ids": [
+        "ELD-19"
+      ]
+    }
+  ]
+}

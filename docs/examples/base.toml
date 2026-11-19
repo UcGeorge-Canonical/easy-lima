@@ -1,0 +1,8 @@
+schema_version = 1
+[environment]
+template = "ubuntu-24.04"
+presets = ["base"]
+[resources]
+cpus = 4
+memory = "8GiB"
+disk = "80GiB"

@@ -1,0 +1,18 @@
+# easy-lima supplies local, digest-verified image paths and all governed fields.
+# Guest setup runs through recorded stages, never an every-boot provision hook.
+minimumLimaVersion: "2.2.1"
+os: Linux
+user:
+  name: developer
+  comment: easy-lima developer
+  home: /home/developer
+  shell: /bin/bash
+  uid: 1000
+containerd:
+  system: false
+  user: false
+ssh:
+  forwardAgent: false
+  loadDotSSHPubKeys: false
+  overVsock: false
+propagateProxyEnv: false

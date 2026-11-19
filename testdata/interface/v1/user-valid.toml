@@ -1,0 +1,16 @@
+schema_version = 1
+[storage]
+root = "/chosen/volume/vms"
+[runtime]
+limactl = "/chosen/bin/limactl"
+[defaults.environment]
+template = "ubuntu-24.04"
+presets = ["base"]
+[defaults.resources]
+cpus = 4
+memory = "8GiB"
+disk = "80GiB"
+[ui]
+open_action = "ssh"
+show_hidden = false
+show_dependencies = false

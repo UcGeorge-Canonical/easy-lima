@@ -1,0 +1,187 @@
+{
+  "mode": "BRAINSTORM",
+  "round": "2026-11-18-v1",
+  "coordinator_agent_id": "/root/goldfish_synthesis",
+  "native_tool": "collaboration.spawn_agent",
+  "agent_type": "default",
+  "fork_turns": "none",
+  "concurrency": {
+    "total_slots": 4,
+    "root_slots": 1,
+    "synthesizer_slots": 1,
+    "reviewer_slots": 2,
+    "waves": 3
+  },
+  "inputs": [
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/inputs/FEATURES.md",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/inputs/concepts_brief.md"
+  ],
+  "standards": [
+    "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/feature-spec-standard.md",
+    "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/zoom-out-standard.md"
+  ],
+  "read_only_evidence_whitelist": [
+    "/Volumes/Nebula/dev/Canonical/local/README.md",
+    "/Volumes/Nebula/dev/Canonical/local/Makefile",
+    "/Volumes/Nebula/dev/Canonical/local/local-vms.toml",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/ source/tests"
+  ],
+  "required_reads": "Persona first; both complete frozen inputs; both complete standards. Confirm persona frontmatter.",
+  "review_scope": "Concept quality and design-entry risks for author-approved v1, not an implementation-document completeness audit. No further readiness gate. Version or implementation TBDs are not blockers absent a concrete contradictory promise.",
+  "prohibitions": [
+    "No source changes, tests, installations, or VM operations.",
+    "No .local-state, private SSH keys, Keychain, agent state, host SSH settings, repositories under github/, or conversation/history/memory services.",
+    "No other reviewer findings or parent transcripts.",
+    "Do not silently change author-approved scope."
+  ],
+  "return_contract": "Self-reported read acknowledgment; stable raw IDs; severity Blocker/Major/Nit; grounded frozen-input or whitelisted-code line references; rationale; mitigation; disposition (author decision needed / implementation-design requirement / advisory); strengths; method limitations; consulted code/sources.",
+  "native_evidence_limit": "Canonical task names are the agent identifiers returned by spawn_agent. Parent sees native dispatch and completion messages, but child read-tool traces are not exposed here; read acknowledgments will be recorded as self-reported. Exclusion of host/project instruction files is unverified.",
+  "reviewers": [
+    {
+      "reviewer": "egm-design",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/design_critic.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 1,
+      "agent_id": "/root/goldfish_synthesis/design_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-design.md",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "DESIGN-01",
+        "DESIGN-02",
+        "DESIGN-03",
+        "DESIGN-04"
+      ],
+      "raw_report_sha256": "d6c89ad1584cdfd0639b32d1295c78b26ac48d1c352f8d6cd0432a9df7e7ef7b"
+    },
+    {
+      "reviewer": "egm-codebase-details",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/codebase_details.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 1,
+      "agent_id": "/root/goldfish_synthesis/codebase_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-codebase-details.md",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "CODEBASE-01",
+        "CODEBASE-02",
+        "CODEBASE-03",
+        "CODEBASE-04"
+      ],
+      "raw_report_sha256": "aca31506402d0a3dbf812d277e3032cb84a4f4c1338e934d429a92832697605b"
+    },
+    {
+      "reviewer": "egm-zoom-out",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/zoom_out.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 2,
+      "agent_id": "/root/goldfish_synthesis/zoom_out_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-zoom-out.md",
+      "focus_instruction": "Keep your report focused on your strongest actionable findings; an exhaustive implementation audit is unnecessary.",
+      "additional_instruction": "You MUST inspect existing whitelisted code for reuse, as required by your persona and zoom-out standard.",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "ZOOM-01",
+        "ZOOM-02",
+        "ZOOM-03",
+        "ZOOM-04"
+      ],
+      "raw_report_sha256": "d90eb7b9c34d76334bbba2b0c8956bbdd53ee95eef57b79592c442075a872775"
+    },
+    {
+      "reviewer": "egm-comprehension",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/comprehension.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 2,
+      "agent_id": "/root/goldfish_synthesis/comprehension_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-comprehension.md",
+      "focus_instruction": "Keep your report focused on your strongest actionable findings; an exhaustive implementation audit is unnecessary.",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "COMPREHENSION-01",
+        "COMPREHENSION-02",
+        "COMPREHENSION-03"
+      ],
+      "raw_report_sha256": "d182a5c8084d3767cfadd68225065f600780d66ad273daf2577cc71c25ce2439"
+    },
+    {
+      "reviewer": "egm-implementation-readiness",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/implementation_readiness.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 3,
+      "agent_id": "/root/goldfish_synthesis/implementation_readiness_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-implementation-readiness.md",
+      "focus_instruction": "Keep your report focused on your strongest actionable findings; an exhaustive implementation audit is unnecessary.",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "READINESS-01",
+        "READINESS-02",
+        "READINESS-03"
+      ],
+      "raw_report_sha256": "401fcda51e2ded797f3b09fbbb4feef69fecf39cd99f83f6769db03a328bf2a1"
+    },
+    {
+      "reviewer": "egm-structural",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/structural.md",
+      "frontmatter_confirmed_by_synthesizer": true,
+      "wave": 3,
+      "agent_id": "/root/goldfish_synthesis/structural_brainstormer",
+      "status": "completed",
+      "attempts": 1,
+      "raw_report": "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/raw/egm-structural.md",
+      "focus_instruction": "Keep your report focused on your strongest actionable findings; an exhaustive implementation audit is unnecessary.",
+      "native_final_received": true,
+      "required_reads": "self-reported complete",
+      "raw_finding_ids": [
+        "STRUCTURAL-01",
+        "STRUCTURAL-02",
+        "STRUCTURAL-03"
+      ],
+      "raw_report_sha256": "6de1c61d42063b4b2033668c9ec2619283a264b35a80c3753173b5da3f0101b6"
+    }
+  ],
+  "coordinator_followups": [
+    {
+      "recipients": [
+        "/root/goldfish_synthesis/design_brainstormer",
+        "/root/goldfish_synthesis/codebase_brainstormer"
+      ],
+      "message": "Keep the report focused on your strongest actionable concept/design-entry findings; an exhaustive implementation audit is unnecessary. Preserve grounded references and required read acknowledgments."
+    }
+  ],
+  "root_integrity_message": "Root reports initial frozen-input and all 13 source-evidence file hashes match manifest hashes. Synthesizer did not independently inspect or modify manifest.json.",
+  "wave_timing_note": "Three pairs were dispatched; both earlier-wave finals arrived before the next wave dispatch. Raw report persistence overlapped later reviewer work. Root permitted staggered slot reuse, but no inter-wave overlap was needed.",
+  "completion_summary": {
+    "requested": 6,
+    "completed": 6,
+    "not_run": 0,
+    "retries": 0,
+    "raw_findings": 21,
+    "raw_severities": {
+      "Blocker": 0,
+      "Major": 19,
+      "Nit": 2
+    },
+    "consolidated_severities": {
+      "Blocker": 0,
+      "Major": 10,
+      "Nit": 1
+    },
+    "consolidated_findings": 11
+  },
+  "feature_concept": "easy-lima is a project-oriented wrapper around Lima for macOS and Linux with one persistent Ubuntu VM per registered project. V1 adds nested project selection, native Lima configuration and limited presets, deliberate storage, SSH/VS Code access, named isolated Git identities, diagnosis/recovery, and adoption of the existing prototype. Automatic storage moves, snapshots/cloning, multiple environments per project, Windows/WSL, and Workshop integration are deferred."
+}

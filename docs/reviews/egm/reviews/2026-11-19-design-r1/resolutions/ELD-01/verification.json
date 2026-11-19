@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-19",
+  "finding": "ELD-01",
+  "status": "passed",
+  "checks": "Document links, structure, required transition fields, decision/status consistency and protected review hashes",
+  "documents_checked": 8,
+  "local_links_checked": 159,
+  "tables_checked": 41,
+  "protected_review_files_unchanged": 39,
+  "author_decision_recorded": true,
+  "ELD_02_still_open": true,
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 11,
+    "Nit": 1
+  },
+  "independent_reaudit": false,
+  "runtime_tests_run": false,
+  "live_resources_changed": false,
+  "errors": []
+}

@@ -1,0 +1,11 @@
+{
+  "reason": "Author requested a standalone easy-lima repository, without make local compatibility entry points.",
+  "moves": {
+    "/Volumes/Nebula/dev/Canonical/local/FEATURES.md": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/FEATURES.md",
+    "/Volumes/Nebula/dev/Canonical/local/concepts_brief.md": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/concepts_brief.md",
+    "/Volumes/Nebula/dev/Canonical/local/goldfish_review_report.md": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/goldfish_review_report.md",
+    "/Volumes/Nebula/dev/Canonical/local/.egm": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm"
+  },
+  "historical_evidence": "Frozen inputs, raw reports, original_report.md, manifests and verification records retain their original bytes and historical paths. Resolve moved paths using this mapping; the existing make local source and machine configuration remain at their original locations.",
+  "original_report_sha256": "8c4e073225d484293dc031c98fbc8900af4e7bb0b8e9d832c80c566bf54024fa"
+}

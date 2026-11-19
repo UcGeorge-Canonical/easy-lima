@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-19",
+  "status": "passed",
+  "scope": "Documentation consistency only; no application tests or source fixture execution.",
+  "checks": {
+    "protected_artifacts": 54,
+    "json_files": 29,
+    "table_rows": 652,
+    "local_links": 310,
+    "toml_examples": 4,
+    "json_examples": 4,
+    "current_markdown_files": 17,
+    "applied_findings": 17,
+    "remaining_findings": [
+      "ELD-11",
+      "ELD-12"
+    ]
+  },
+  "errors": [],
+  "independent_reaudit": false,
+  "runtime_tests": false,
+  "live_resources_accessed": false,
+  "protected_history_unchanged": true
+}

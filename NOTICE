@@ -1,0 +1,7 @@
+easy-lima
+Copyright 2026 easy-lima contributors
+
+Lima is an external dependency and is not bundled.
+Ubuntu images, snaps, and Docker packages are downloaded from their publishers
+only when requested; their respective licenses continue to apply.
+Dependency license texts are included in THIRD_PARTY_NOTICES.txt.

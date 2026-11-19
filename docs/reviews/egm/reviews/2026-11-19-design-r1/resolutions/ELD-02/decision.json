@@ -1,0 +1,27 @@
+{
+  "finding": "ELD-02",
+  "date": "2026-11-19",
+  "status": "applied_to_design",
+  "author": "George Uche-Umeh",
+  "user_reply": "Agreed",
+  "approved_rule": "Preserve verified Git use of externally managed adopted agents; refuse Lock and credential changes until explicit migration to an easy-lima-managed agent.",
+  "internal_mechanisms": "Resource-level capabilities; observation-only external adapter; same-key independent owned agent; full-member migration with previewed quiescence; generation-bound capabilities and recoverable pending VM targets.",
+  "files": [
+    "ADOPTED_AGENTS.md",
+    "PROFILE_TRANSITIONS.md",
+    "design_draft.md",
+    "UX_PROPOSAL.md",
+    "FEATURES.md",
+    "README.md",
+    "concepts_brief.md",
+    "consolidated_review_report.md"
+  ],
+  "independent_reaudit": "pending",
+  "runtime_validation": "not_run",
+  "next_user_facing_finding": "ELD-08",
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 7,
+    "Nit": 1
+  }
+}

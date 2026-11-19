@@ -1,0 +1,20 @@
+schema_version = 1
+[environment]
+template = "ubuntu-24.04"
+presets = ["development", "docker"]
+[resources]
+cpus = 4
+memory = "8GiB"
+disk = "80GiB"
+[identity]
+profile_label = "work"
+[[mounts]]
+source = "../shared-data"
+target = "/data"
+writable = false
+[[ports]]
+guest = 8080
+local = 18080
+protocol = "tcp"
+host_address = "127.0.0.1"
+guest_address = "127.0.0.1"

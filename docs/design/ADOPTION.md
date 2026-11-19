@@ -1,0 +1,82 @@
+> Design record: this document predates implementation. For current behavior and validation, see the [user guides](../../README.md) and [test record](../testing.md). Historical status statements remain part of the decision trail.
+
+# Prototype adoption and executable ownership contract
+
+**Status:** The ELD-08 stop/restoration policy was accepted by George Uche-Umeh on 2026-11-19 ("Yep"). ELD-10's fixture design and the internal recovery mechanisms are selected under the standing delegation. This is a normative design supplement, not an executed handoff or runtime certification.
+
+## Accepted interruption and preservation
+
+Adoption of the supported prototype requires verified stopped-VM evidence before ownership changes. A running VM gets a previewed graceful stop, disconnecting SSH/editor sessions, and restoration of its previous running state after a verified handoff when its recorded startup is supported. A stopped VM stays stopped. Inspection and preview do not stop anything. No automatic force-stop escalation is permitted.
+
+Preserve the actual VM name, disk, source binding, SSH alias, complete public identity/credential references and recorded environment. The single configured storage root must match. The external-agent rules in [ADOPTED_AGENTS.md](ADOPTED_AGENTS.md) remain independent: stopping an adopted VM does not authorize stopping its shared agent. Unknown provisioning history can remain unknown; potentially active legacy work cannot be ignored.
+
+## Supported source and metadata
+
+The importer recognizes the pinned local-launcher source contract, not arbitrary Lima instances or arbitrary Python helpers. The [captured provenance record](../reviews/egm/reviews/2026-11-19-design-r1/resolutions/ELD-08/prototype-source-manifest.json) identifies the reviewed source by SHA-256. A future helper revision must qualify separately. Never execute a supplied helper to discover its schema or provenance.
+
+The importer reads the selected prototype root's `.local-state/projects/<name>.json`, its known configuration/SSH metadata, `launcher.lock` and corresponding instance data. Validate field shapes, namespace, source/name association and exact ownership before any effect. Reject unknown record/owner semantics, path traversal, aliased ownership locations and duplicate records. Legacy paths and record hashes remain recorded after adoption so restored old ownership can be detected. Credentials are references; do not copy private keys or secret-store values into backups.
+
+`Manager.check_ownership` in the pinned source refuses start/stop/delete of an existing instance when its project record is absent. That refusal is the handoff mechanism to test. The old lock protects cooperating host invocations; acquiring it does not prove that a previously dispatched guest command exited.
+
+## Quiescence evidence
+
+The Lima adapter's `ObserveStopped` result is a bounded, nonmutating observation with instance/namespace IDs, configuration and disk identity, runtime/boot identity when previously known, driver contract/version, observation time, process/control observations and completeness. It is **confirmed** only when all of the following hold under the handoff guards:
+
+1. A complete supported Lima observation identifies the same existing instance as stopped; missing/unparseable/unavailable is not stopped.
+2. Driver-specific evidence confirms that the recorded VMM and VM host agent are no longer running for that instance. Use PID plus process start/boot identity and executable/instance binding, and the driver's control endpoint, not a PID-file absence or PID number alone. A reused PID cannot identify the former process. The supported host adapter must qualify these observations separately for VZ and QEMU.
+3. No unresolved legacy/Lima host control operation can still start/edit/provision this target. Inspect the supported process/control bindings while holding `launcher.lock`; retain only classified target evidence, never full environments or raw process arguments. An active or ambiguously targeted old controller means unknown and prevents handoff. Do not kill an unproven process or infer absence from incomplete process visibility.
+4. The instance and required configuration/ownership evidence remain unchanged when checked immediately before retirement. A stopped VM cannot retain its old guest processes; restoration nevertheless rechecks native hooks so it does not restart unsupported legacy work.
+
+The platform qualification must supply a complete process/control observation contract or disable adoption for that combination. There is no optimistic fallback. Uncoordinated external mutation remains outside cooperative management; a visible raw Lima restart invalidates the evidence. Timestamps alone never prove quiescence.
+
+## Ordered handoff
+
+1. **Preview.** Show the exact source/instance/disk/alias, old owner location, backed-up metadata, identity capabilities, current state, stop/restoration and native startup effects. Check storage, [namespace/port boundaries](LIMA_BOUNDARIES.md), supported identity preservation and configuration before interrupting work. Declining leaves the prototype in control.
+2. **Admit.** Acquire the prototype's actual `launcher.lock`, easy-lima's namespace/registration/alias/source/owned-setting claims and the operation executor guard. Revalidate the plan. Commit a stable handoff ID and old/proposed record hashes, prior running state, frozen inputs and backup destinations before dispatch. Lock-order acquisition happens outside SQLite transactions; failure releases only guards with no admitted effects.
+3. **Stop and observe.** The sole pre-transfer VM mutation allowed by this approved handoff is graceful stop of this proven legacy-owned instance. Persist its dispatch intent first. Apply `ObserveStopped`; unknown retains the old owner and handoff claims. Do not retire ownership on a successful stop command alone. Already-stopped VMs still require quiescence observation.
+4. **Back up and retire.** Save exact scoped nonsecret metadata in the private handoff directory with a manifest of hashes, modes and source paths. Exclude credential contents and arbitrary log files. Durably move only this project's active record into the handoff archive while still holding the old lock. Compare expected-old bytes; conflicting edits stop the transfer. Preserve all other prototype records.
+5. **Publish ownership.** Publish the new marker, authoritative registration and namespace event through [the state publication contract](STATE_CONTRACT.md). Every marker/record carries the handoff ID. Only a verified retired old record plus consistent new marker/registry evidence establishes exclusive ownership. Transfer only the unchanged managed alias entry into the owned SSH fragment; preserve user edits and unrelated entries. Record stopped-VM identity/trust checks as pending where appropriate.
+6. **Restore if approved.** After exclusive ownership is verified and the old lock can be released, restore a previously running VM through the same guarded existing-instance start operation, retaining the handoff's frozen environment and linked operation ID. No new preset or unknown legacy script is run. Unsupported/unknown automatic startup hooks block restoration with an explicit result; a verified completed legacy environment does not become a request to reprovision. Previously stopped VMs remain stopped.
+7. **Report separately.** Return ownership-transfer, VM restoration, alias publication, local identity and provider-check results independently. An adopted VM with incomplete restoration remains owned by easy-lima and recoverable against the same disk. Failure does not restore the legacy record or allocate another VM.
+
+Record retirement under the prototype root uses a private same-filesystem archive so rename can be atomic. If the namespace is on another filesystem, the common handoff manifest and hash-checked publication protocol handle that separate effect; never assert a cross-filesystem atomic rename. Backups and retired records are retained while recovery depends on them.
+
+## Recovery predicates
+
+| Durable and observed evidence | Allowed continuation |
+| --- | --- |
+| Intent exists, old owner active, no stop dispatched | Recheck plan/guards; continue or cancel before effects. |
+| Stop may have dispatched; outcome unknown | Reconcile the same instance/controller. Retain claims and old ownership; no retirement, force escalation or duplicate dispatch. |
+| Same VM confirmed stopped; old owner still active | Recheck quiescence/hashes and continue retirement. Explicit cancellation can leave the VM stopped and must report it; it does not silently restart under another owner. |
+| Old record retired, new owner incomplete | Fence VM mutations, validate archive/hash/handoff ID, and complete the recorded publication. Reversal is a separate explicit repair only when no new owner exists and no new-owner effects occurred. |
+| New owner consistent, alias/identity export unfinished | Finish unchanged owned publication or report user conflict. Do not revive the old record. |
+| New owner consistent, restoration unfinished | Reconcile/resume the linked start using the same instance and inputs. Keep ownership-transfer success separate from VM readiness. |
+| Old active record reappears, handoff IDs differ, marker disagrees, or evidence is unavailable | Refuse mutation and retain recovery evidence. No newest-timestamp selection, timeout-based claim expiry, or inventory-authorized repair. |
+
+Later easy-lima mutations recheck the recorded legacy active-record location as well as current ownership. A supported restore/downgrade must not recreate two owners. Directly running modified legacy code or manually restoring its files remains an external mutation, detected where observable.
+
+## Executable legacy fixture (ELD-10)
+
+The implementation will vendor the **unaltered** pinned `local.py` into `testdata/prototype/local-launcher-v1/local.py` with `manifest.json`, `README.md` and a synthetic `provision-fixture.sh`. Its SHA-256 is `55999dc949a226ad73cf3bd0084fa6eb4164162e9f296445c14f6b01e6d0333f`. This design captures provenance now; it does not create or execute the fixture. The other source hashes in the provenance record document reusable scenarios, not a requirement to vendor credential helpers.
+
+The fixture is test-only and never embedded in the released binary. `make test-contracts` requires Python 3.11+ for this contract test because the real helper imports `tomllib`; a missing interpreter is an explicit test prerequisite failure, not a silent skip. Installed users still need only the released host binary and runtime dependencies. CI supplies the interpreter in its isolated test environment.
+
+Use `testsupport/prototype/driver.py` and `internal/app/adopt_contract_test.go` with this protocol:
+
+- The Go test starts `python3 -I` with the absolute driver path, a private disposable test root and a bounded JSON request on stdin. The request selects `up`, `stop` or `delete`, the synthetic instance state, and active/retired/mismatched metadata. The fixture path/digest is fixed by the checked-in manifest, not caller-selected code.
+- The driver verifies the source hash before import. It constructs the actual `Manager` and `Project` with explicit sandbox root, Lima root and SSH-config paths. No real project or user state is mounted/passed. Disable Git configuration; credential helper imports and `Path.home()` calls are test failures. Patch only the documented host-boundary dependencies, never `check_ownership`, `up`, `provision`, `stop`, `delete` or JSON parsing. Explicitly rebind the imported module's `local.ROOT` to that same disposable sandbox root: Manager(root=...) alone does not change the module-level constant. Populate `<sandbox>/.local-launcher/provision.sh` from the manifest-bound synthetic fixture before calling a real method; no implicit access to the source checkout is permitted.
+- The fake `local.run` accepts an allowlisted argv protocol: version and list return captured supported fixtures; mutating Lima/SSH calls append a structured dispatch record and return the scenario response. `platform.system`/`shutil.which` report the simulated supported environment. Real `subprocess.Popen`, sockets and credential/service invocations are rejected. Unexpected commands fail the test, not return success.
+- Assertions execute the real refusal paths: an existing running **and** stopped instance whose ownership record is retired must reject all three methods before any mutating dispatch. Version/list observations are allowed. A mismatched active record must also refuse. Matching-record positive controls must complete the real method: running/stopped `up` reaches the fake provisioning dispatch when its saved digest is absent; running `stop` reaches fake stop; already-stopped `stop` is a successful zero-mutation no-op; confirmed `delete` reaches its expected fake delete. Distinguish successful no-op from ownership refusal, and never terminate a control early merely after seeing its first mutation.
+- `driver.py` returns only `{schema_version:1, result, error_class, observations, mutations, touched_paths}` with bounded safe values. The Go harness checks expected refusal, an empty mutation log, unchanged unrelated records/aliases and no access outside the test fixture/root. A synthetic backup file must not count as an active record.
+
+The synthetic `provision-fixture.sh` bytes are exactly `#!/bin/sh\nexit 97\n` (UTF-8 with those two newline bytes), read as data only and copied with mode 0600. Its SHA-256 is `d3b5f42d8a63f02454ce59ec36d72b0cb90e0f02df8b3f1793c6a7d85102542e`. No synthetic or original guest script is executed. Preserve the helper's real hash calculation over script text plus its JSON settings.
+
+For the stale/absent digest `up` control, fake `shell ... cat /var/lib/canonical-local/provision.sha256` returns an empty string, fake `id -un` returns the fixed sandbox user, and fake `shell ... sudo bash -c ...` asserts the exact script input/settings/digest then records a provisioning mutation and returns success. Model `start`/`stop`/`delete` state changes in subsequent fake list responses. Before invoking the method, create a bounded synthetic `<sandbox-lima-home>/<project.name>/ssh.config` containing only the synthetic project Host, loopback HostName, fixed fake port and fixture User. The real `update_ssh` checks this file on disk; it does not call `show-ssh`, which is therefore not an allowed fake command. Assert that the actual generated include names this exact sandbox file, that the supplied sandbox SSH config includes that generated fragment, and that unrelated entries remain unchanged. Keep successful fake SSH control-exit/workspace probes so the real end-of-up checks complete. File publication assertions are separate from fake transport success; the fixture makes no claim to validate real SSH authentication. The matching-digest case returns the real computed digest and verifies that provisioning is skipped while remaining real checks still run. Missing script data, unexpected source paths or unallowlisted subprocesses are fixture failures, never ownership-refusal successes.
+
+`testdata/prototype/scenarios.json` defines those cases and interruption variants. `testsupport/prototype/fake_runtime.py` implements argv responses and access guards. A separate fake guest-job handle can outlive its simulated legacy controller: the easy-lima adoption scenario must remain blocked until the approved stop/quiescence evidence is supplied. That simulated job proves coordinator behavior; real-host acceptance additionally demonstrates an actual surviving guest job and driver stopped-state evidence. Do not present the fake as proof of a real VMM's termination.
+
+## Planned evidence
+
+Extend `internal/app/adopt.go`, `adopt_test.go`, `recovery_test.go` and the Lima host-observation adapter. Add the exact fixture/harness paths above to the implementation manifest. Preserve the initial [proposal](../reviews/egm/reviews/2026-11-19-design-r1/resolutions/ELD-08/proposal.md) as historical decision context.
+
+Acceptance covers declined interruption, originally stopped/running VMs, stop timeout, unknown host control work, surviving legacy guest work, every ownership/publication crash boundary, failed restoration, and a restored old owner. Verify unchanged disk/name/alias/key, no preset update and continued use of another legacy VM/shared agent. These tests have not been run.

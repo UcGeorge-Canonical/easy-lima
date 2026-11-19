@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-19",
+  "source_root": "/Volumes/Nebula/dev/Canonical/local/.local-launcher",
+  "observation": "Read-only source hashing; no prototype import, execution, live state or credential access.",
+  "files": [
+    {
+      "path": "local.py",
+      "sha256": "55999dc949a226ad73cf3bd0084fa6eb4164162e9f296445c14f6b01e6d0333f",
+      "role": "pinned executable fixture source"
+    },
+    {
+      "path": "tui.py",
+      "sha256": "a2c2143e3a91e1060cd34d07ac8aea6ee5043fc2fdc45af3f30d43876981a40e",
+      "role": "behavior and test-scenario evidence"
+    },
+    {
+      "path": "provision.sh",
+      "sha256": "b723f9129edaf53e9f6cd298b560d742a23be9da52c64a089820cebfc57ad043",
+      "role": "behavior and test-scenario evidence"
+    },
+    {
+      "path": "verify.sh",
+      "sha256": "ded9a6c2033df106a4880568abec6f17213441c036ab77553ce45110bf395c96",
+      "role": "behavior and test-scenario evidence"
+    },
+    {
+      "path": "tests/test_local.py",
+      "sha256": "0c395ee0ddb7a973a07fc6defd5927435e656ce8178136728cc3c88c16546f12",
+      "role": "behavior and test-scenario evidence"
+    },
+    {
+      "path": "tests/test_work_git.py",
+      "sha256": "0b2ea4556b67b50c4371b92f4e50e4b0f1ddbc4b651f76355a008cd393a40d61",
+      "role": "behavior and test-scenario evidence"
+    }
+  ],
+  "planned_fixture": "testdata/prototype/local-launcher-v1/local.py",
+  "fixture_copied": false,
+  "fixture_executed": false,
+  "redistribution": "Retain original source/notices and record provenance/license review when the fixture is implemented; this local review record is not a publication."
+}

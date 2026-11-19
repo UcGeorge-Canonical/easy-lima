@@ -1,0 +1,23 @@
+{
+  "round": "2026-11-18-v1",
+  "mode": "BRAINSTORM",
+  "inputs": {
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/inputs/FEATURES.md": "e6ab8e61e716ffbce36fbf89b361d3021fef4016fa5d820b7e0350f10d8d83ab",
+    "/Volumes/Nebula/dev/Canonical/local/.egm/reviews/2026-11-18-v1/inputs/concepts_brief.md": "5a0155484fab36015194937b78db0c92b3d61c149cda8d78ae826f540585a0ac"
+  },
+  "source_evidence": {
+    "/Volumes/Nebula/dev/Canonical/local/README.md": "8283819e90a1a10d330629ad10370bcc540c6be6f37e600da9da27856ae7abc5",
+    "/Volumes/Nebula/dev/Canonical/local/Makefile": "75850b524550ea06943d8e057ebdef87233a20bd224cc1b087ee5e7a85d4b0a8",
+    "/Volumes/Nebula/dev/Canonical/local/local-vms.toml": "ded3be92d6117ee54ee91ae63a279a1e439f4b1a9e9e536fee03560ca5e93ac2",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/git-agent.py": "256e8bb207010b0f54d69d752d497710b400aede55493b293983392508f5f7e8",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/git-check.py": "95f42c7a97a4605ced1898a36e1db42f80ffbb8a8154443f6ea0fe771766a5dd",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/git-guest.py": "6ee6e2a0ddf0d64f044c75efcb131a413f36705630476bf1c9c7c8868666ad1c",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/git_identity.py": "01980f6a045fb64a43a63ad7e387bab44549bda7bef394f3b877ca4d210a785a",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/local.py": "55999dc949a226ad73cf3bd0084fa6eb4164162e9f296445c14f6b01e6d0333f",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/provision.sh": "b723f9129edaf53e9f6cd298b560d742a23be9da52c64a089820cebfc57ad043",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/tests/test_local.py": "0c395ee0ddb7a973a07fc6defd5927435e656ce8178136728cc3c88c16546f12",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/tests/test_work_git.py": "0b2ea4556b67b50c4371b92f4e50e4b0f1ddbc4b651f76355a008cd393a40d61",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/tui.py": "a2c2143e3a91e1060cd34d07ac8aea6ee5043fc2fdc45af3f30d43876981a40e",
+    "/Volumes/Nebula/dev/Canonical/local/.local-launcher/verify.sh": "ded9a6c2033df106a4880568abec6f17213441c036ab77553ce45110bf395c96"
+  }
+}

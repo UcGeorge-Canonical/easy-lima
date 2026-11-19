@@ -1,0 +1,30 @@
+name: VM acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      presets:
+        description: Preset composition
+        type: choice
+        options: [base, 'base,development', 'base,docker', 'base,development,docker']
+        default: base,development,docker
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    # Dedicated machines must provide Lima 2.2.1, virtualization, enough storage,
+    # and an owned disposable EASY_LIMA_ACCEPTANCE_ROOT ending .easy-lima-test.
+    # Never dispatch unreviewed pull-request code to these machines.
+    runs-on: [self-hosted, easy-lima-acceptance]
+    timeout-minutes: 60
+    env:
+      EASY_LIMA_TEST_PRESETS: ${{ inputs.presets }}
+      EASY_LIMA_TEST_PROFILE: '1'
+      EASY_LIMA_TEST_SHARED_PROFILE: '1'
+      EASY_LIMA_TEST_JUJU: '1'
+      EASY_LIMA_TEST_ADOPTION: '1'
+    steps:
+      - uses: actions/checkout@v6.1.0
+        with:
+          persist-credentials: false
+      - run: make check
+      - run: EASY_LIMA_BINARY="$PWD/bin/easy-lima" make test-acceptance

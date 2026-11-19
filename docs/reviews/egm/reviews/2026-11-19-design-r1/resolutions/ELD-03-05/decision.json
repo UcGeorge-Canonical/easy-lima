@@ -1,0 +1,18 @@
+{
+  "findings": [
+    "ELD-03",
+    "ELD-04",
+    "ELD-05"
+  ],
+  "date": "2026-11-19",
+  "status": "applied_to_design",
+  "authority": "Standing delegation for internal choices; no new public command or prompt introduced.",
+  "contract": "LIMA_BOUNDARIES.md",
+  "decisions": {
+    "ELD-03": "Applied: [LIMA_BOUNDARIES.md](LIMA_BOUNDARIES.md#frozen-namespace-configuration-eld-03) specifies a concrete v1 boundary: absent/empty namespace globals only, no silent edits to shared files, retained presence/digests and consumed dependencies, separate creation-base provenance, pre/post-dispatch drift checks and conservative refusal. Native instance YAML remains supported within its recorded boundaries.",
+    "ELD-04": "Applied: [LIMA_BOUNDARIES.md](LIMA_BOUNDARIES.md#vm-ssh-host-key-trust-eld-04) defines local endpoint trust-on-first-use with an explicit local-host assumption, imported pins, deferred stopped-VM enrollment, authoritative trust generations, strict owned SSH configuration/exports, mismatch refusal and explicit replacement repair. Diagnostics never enroll; Lima internal bootstrap is not misrepresented as pinned.",
+    "ELD-05": "Applied: [LIMA_BOUNDARIES.md](LIMA_BOUNDARIES.md#explicit-application-port-forwarding-eld-05) defines approved mappings followed by the exact catch-all ignore rule, explicit GRPC backend for persistent TCP/UDP mappings, localhost address/port/protocol accounting, the separate SSH transport, and pre-retirement refusal of incompatible adopted rules."
+  },
+  "independent_reaudit": "pending",
+  "runtime_validation": "not_run"
+}

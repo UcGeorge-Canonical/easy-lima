@@ -1,0 +1,450 @@
+{
+  "status": "review_complete_findings_open",
+  "date": "2026-11-19",
+  "reviewed_snapshot": "inputs/design_draft.md",
+  "actions": [
+    {
+      "id": "ELD-01",
+      "severity": "Major",
+      "title": "Make shared credential changes profile-wide",
+      "raw": [
+        "S5-ZOOM-01",
+        "S8-ZOOM-01",
+        "S9-READY-05"
+      ],
+      "line": 548,
+      "scope": "T6\u2013T8 profile revisions and claims; T11 profile change; implementation identity work",
+      "authority": "Author approved the SSH-key scope rule on 2026-11-19; remaining internal transition mechanics selected under the standing delegation.",
+      "status": "applied_not_reaudited",
+      "issue": "One shared agent offers one key, while the plan allows a changed profile to be applied to only some VMs. Replacing that key would affect VMs outside the selected set. Per-VM applied revisions and interrupted multi-VM transitions are also underspecified.",
+      "recommendation": "Applied: PROFILE_TRANSITIONS.md defines full-member credential changes, separate profiles for a different-key subset, per-VM applied/pending identity revisions, finite claims plus forwarding revocation, durable credential commit and completion handoffs, deferred stopped-VM updates, and recovery from partial effects. The design, approved UX and feature scope reference the same rule.",
+      "validation": "Documentation consistency and scenario coverage checked for this resolution; no runtime tests or new independent review. Required implementation cases are recorded in PROFILE_TRANSITIONS.md.",
+      "decision": {
+        "date": "2026-11-19",
+        "user_reply": "Yes",
+        "approved_rule": "An SSH-key change includes every VM using the profile. A subset needing a different key uses a separate profile.",
+        "design_contract": "PROFILE_TRANSITIONS.md",
+        "scope_limit": "ELD-02 external-agent administration and broader ELD-11\u2013ELD-14 contracts remain open."
+      }
+    },
+    {
+      "id": "ELD-02",
+      "severity": "Major",
+      "title": "Define administration of externally managed adopted agents",
+      "raw": [
+        "S5-ZOOM-02",
+        "S7-DESIGN-03",
+        "S8-ZOOM-02",
+        "S9-CODE-02"
+      ],
+      "line": 1037,
+      "scope": "T8 lock/activation; T9 persistent forwarding; T11 adoption",
+      "authority": "Author decision: an external-profile lock limitation changes the approved experience.",
+      "status": "open_author_decision",
+      "issue": "The adopted legacy agent may still serve non-adopted projects. Its supervisor reloads the key after restart. Unloading it disrupts those projects; an easy-lima inhibition flag alone cannot prevent reload or revoke existing forwards.",
+      "recommendation": "Expose owned-versus-external capabilities explicitly. Recommend refusing unsupported agent administration, including full Lock, until a separate ownership migration establishes control of all affected resources. Keep verified use and read-only checks available. A narrower connection-revocation meaning of Lock would require its own complete mechanism and explicit UX decision.",
+      "validation": "Adopt one of two legacy projects, attempt Lock, restart the legacy supervisor, and verify truthful status and continued operation of the non-adopted project."
+    },
+    {
+      "id": "ELD-03",
+      "severity": "Major",
+      "title": "Include namespace-wide Lima configuration in frozen inputs",
+      "raw": [
+        "S7-DESIGN-01",
+        "S8-ZOOM-03"
+      ],
+      "line": 267,
+      "scope": "T3 adapter; T4 retained inputs; T10 assets; T11 lifecycle/adoption",
+      "authority": "Internal design correction under the standing delegation.",
+      "status": "open_internal",
+      "issue": "Lima reads _config/default.yaml and override.yaml on later starts, plus base.yaml during creation. Unchanged instance YAML therefore does not prove unchanged effective mounts, scripts, or resources.",
+      "recommendation": "Add one effective-configuration contract to the version-specific adapter. Record supported global files and their absence/dependencies, include their merge effects in the retained revision, and refuse unreviewed drift before dispatch. Reject unsupported configuration precisely without rewriting files shared with unrelated VMs. Adoption checks this before ownership retirement.",
+      "validation": "Change only a namespace overlay, leaving instance YAML unchanged. Start and retry must detect the change before provisioning or exposure; other instances' namespace files remain untouched.",
+      "sources": [
+        [
+          "Lima global configuration",
+          "https://github.com/lima-vm/lima/blob/v2.2.1/templates/default.yaml#L625"
+        ],
+        [
+          "Lima loader",
+          "https://github.com/lima-vm/lima/blob/v2.2.1/pkg/limayaml/load.go#L31"
+        ]
+      ]
+    },
+    {
+      "id": "ELD-04",
+      "severity": "Major",
+      "title": "Specify VM host-key enrollment and verification",
+      "raw": [
+        "S7-DESIGN-02",
+        "S8-ZOOM-04"
+      ],
+      "line": 904,
+      "scope": "T9 tunnel, proxy, aliases and diagnostics",
+      "authority": "Internal trust protocol; any added user prompt requires UX review.",
+      "status": "open_internal",
+      "issue": "The design promises verified VM SSH transport but specifies only GitHub key enrollment. Lima's generated settings disable strict host-key checking and use /dev/null for known hosts, so retaining them cannot establish the promised trust.",
+      "recommendation": "Define a per-registration VM trust record, initial enrollment source/policy, and behavior for adoption, port changes, rebinding and unexpected replacement. Explicitly enforce effective OpenSSH verification settings across all managed connections. State any first-use trust assumption truthfully. Establish trust before exposing a profile socket; diagnostics consume existing trust without enrolling it.",
+      "validation": "Inspect effective SSH configuration, connect a fresh/adopted VM, then substitute a wrong endpoint or changed host key. Fail before any profile forwarding.",
+      "sources": [
+        [
+          "Lima SSH options",
+          "https://github.com/lima-vm/lima/blob/v2.2.1/pkg/sshutil/sshutil.go#L375"
+        ],
+        [
+          "OpenSSH host-key checking",
+          "https://man.openbsd.org/ssh_config#StrictHostKeyChecking"
+        ]
+      ]
+    },
+    {
+      "id": "ELD-05",
+      "severity": "Major",
+      "title": "Suppress implicit application-port forwarding",
+      "raw": [
+        "S7-DESIGN-04",
+        "S8-ZOOM-03"
+      ],
+      "line": 513,
+      "scope": "T5 ports; T9 transport; native configuration generation/adoption",
+      "authority": "Internal enforcement of already approved explicit port exposure.",
+      "status": "open_internal",
+      "issue": "An empty requested-port list does not disable Lima's automatic localhost forwarding. Unlisted guest listeners could appear on host ports and conflict across projects.",
+      "recommendation": "Own a native rule set with approved mappings followed by the tested catch-all ignore rule, including the required guest-address behavior. Define supported address/protocol coverage and the separate VM SSH transport. Reuse the prototype safeguard; validate effective custom/adopted configuration before proceeding.",
+      "validation": "Start unlisted application listeners after creation in two VMs. No host application port may appear; approved mappings remain distinct and functional.",
+      "sources": [
+        [
+          "Lima port forwarding",
+          "https://lima-vm.io/docs/config/port/#disabling-port-forwarding"
+        ]
+      ]
+    },
+    {
+      "id": "ELD-06",
+      "severity": "Major",
+      "title": "Separate design approval, implementation qualification and release gates",
+      "raw": [
+        "S7-STYLE-01",
+        "S9-STYLE-01"
+      ],
+      "line": 529,
+      "scope": "T5/T7 verification wording; implementation build order",
+      "authority": "Internal documentation correction.",
+      "status": "applied_not_reaudited",
+      "issue": "Some tests were required before implementation approval although they need implemented components; the final build step also combined design review with release review.",
+      "recommendation": "Applied: make design-findings resolution a prerequisite to production implementation, run driver/Lima qualification early during implementation, and require implementation review plus release gates before publication. Preserve the live-resource boundary in the completion section.",
+      "validation": "Documentation consistency checked; the correction has not received a new independent review."
+    },
+    {
+      "id": "ELD-07",
+      "severity": "Major",
+      "title": "State the approved GitHub HTTPS-to-SSH mapping normatively",
+      "raw": [
+        "S7-STYLE-02"
+      ],
+      "line": 937,
+      "scope": "T9 guest Git transport",
+      "authority": "Alignment with the already approved UX contract.",
+      "status": "applied_not_reaudited",
+      "issue": "The technical paragraph still described the approved mapping as optional/proposed, allowing an implementation to omit it.",
+      "recommendation": "Applied: new profile-enabled guests use the owned Git-only mapping; show it in the setup preview and reject user-configuration conflicts. Preserve repository remotes and host Git settings.",
+      "validation": "Text checked against the approved UX. Runtime transport behavior remains an implementation acceptance test."
+    },
+    {
+      "id": "ELD-08",
+      "severity": "Major",
+      "title": "Prove legacy guest work has stopped before adoption cutover",
+      "raw": [
+        "S9-CODE-01"
+      ],
+      "line": 1022,
+      "scope": "T11 handoff admission/recovery; adoption scenario fixtures",
+      "authority": "Internal recovery rule; any required stop remains an explicit previewed effect.",
+      "status": "open_internal",
+      "issue": "The legacy host lock can be released after a controller failure while a dispatched guest provision command continues. The final provisioning digest does not identify active jobs. Retiring the record prevents new old-helper calls but does not quiesce existing work.",
+      "recommendation": "Distinguish unknown historical provenance from potentially active work. Require positive quiescence evidence before cutover; where the legacy helper cannot supply it, use verified stopped-VM evidence through an explicitly previewed action or refuse. Persist the evidence and retain handoff claims while unknown.",
+      "validation": "Terminate or time out the legacy controller after guest dispatch while its job survives. Ownership retirement alone must not admit a conflicting easy-lima mutation."
+    },
+    {
+      "id": "ELD-09",
+      "severity": "Major",
+      "title": "Define development and Docker preset composition",
+      "raw": [
+        "S9-CODE-03"
+      ],
+      "line": 983,
+      "scope": "T10 presets; preset scripts and workload release gates",
+      "authority": "Internal implementation of the approved optional Docker combination.",
+      "status": "open_internal",
+      "issue": "The prototype includes a Docker/LXD forwarding workaround and combined workload checks. The new separate presets do not define installation/backend policy, order, owned network changes or restart behavior, and the release gate omits Docker-only/combined cases.",
+      "recommendation": "Specify Docker's installation/version policy and firewall backend, preset ordering, narrowly owned networking effects and restart postconditions. Review the old global policy workaround rather than copying it indiscriminately. Add Docker-only and combined development/Docker workload gates.",
+      "validation": "Restart Docker, then verify Docker networking, LXD container networking and the Juju workload for the combined supported preset.",
+      "sources": [
+        [
+          "Docker packet filtering",
+          "https://docs.docker.com/engine/network/packet-filtering-firewalls/#docker-on-a-router"
+        ],
+        [
+          "LXD firewall guidance",
+          "https://canonical.com/lxd/docs/latest/howto/network_bridge_firewalld/"
+        ]
+      ]
+    },
+    {
+      "id": "ELD-10",
+      "severity": "Major",
+      "title": "Specify an executable legacy-ownership contract fixture",
+      "raw": [
+        "S9-CODE-04"
+      ],
+      "line": 1206,
+      "scope": "Prototype manifest, contract tests and test infrastructure",
+      "authority": "Internal test design and provenance work.",
+      "status": "open_internal",
+      "issue": "A JSON prototype manifest plus generic Go fakes cannot independently prove that the supported old helper refuses start/stop/delete after record retirement. Exact source provenance, executable fixture paths and the isolated subprocess harness are missing.",
+      "recommendation": "Define a pinned/provenance-checked legacy fixture, exact helper paths, test-only interpreter requirements, fake Lima/process protocol and isolated configuration/state. Execute the supported legacy refusal paths and assert that they dispatch no mutation. Add every fixture/harness file to the implementation manifest; keep the installed binary independent of Python.",
+      "validation": "Run the actual fixture against retired metadata with no live Lima namespace or credentials accessible. Verify refusal and an empty mutation log."
+    },
+    {
+      "id": "ELD-11",
+      "severity": "Major",
+      "title": "Finish normative TOML schemas and CLI input grammar",
+      "raw": [
+        "S9-READY-01"
+      ],
+      "line": 1045,
+      "scope": "T5/T12 schemas; T13 CLI; model/config/examples/tests",
+      "authority": "Draft one consolidated public-interface appendix for author review.",
+      "status": "open_interface_spec",
+      "issue": "The selected tables and illustrative example omit exact field shapes, validation, defaults and immutability for editor/UI, mounts/ports and profiles. Noninteractive profile inputs, secret file-descriptor flags and update/creation mappings are not fully specified.",
+      "recommendation": "Write a version-1 field and command-input appendix with exact names, types, required/default/immutable rules, quantity validation and flag mappings. Include accepted/rejected creation, profile, mounts/ports and environment-update examples. Preserve approved workflows; present any new interface choices together.",
+      "validation": "Use the normative examples as configuration and CLI contract fixtures, including missing values, duplicate/unknown fields, invalid quantities and noninteractive secret input."
+    },
+    {
+      "id": "ELD-12",
+      "severity": "Major",
+      "title": "Finish command-result schemas, stable codes and exit precedence",
+      "raw": [
+        "S9-READY-02"
+      ],
+      "line": 1081,
+      "scope": "T12 diagnostics; T13 JSON; renderers/model/CLI tests",
+      "authority": "Draft alongside the consolidated public-interface appendix.",
+      "status": "open_interface_spec",
+      "issue": "Only the JSON envelope and coarse numeric exits are defined. Command-specific data, outcome values, stable diagnostic codes, malformed-record representation and mixed-failure aggregation remain choices for the implementer.",
+      "recommendation": "Specify version-1 payloads and stable codes for each metadata command family. Define precedence when confirmed failures coexist with unavailable checks, preserving every check's status. Add success, failure, unavailable and mixed-result examples; retain raw exec/SSH stream semantics.",
+      "validation": "Golden contract fixtures must cover list with a malformed row and doctor with both a failed ownership check and unavailable provider verification."
+    },
+    {
+      "id": "ELD-13",
+      "severity": "Major",
+      "title": "Complete state schemas and ownership-publication predicates",
+      "raw": [
+        "S9-READY-03"
+      ],
+      "line": 1041,
+      "scope": "T6/T12 SQLite additions; namespace markers; restore/handoff recovery",
+      "authority": "Internal protocol specification under the standing delegation.",
+      "status": "open_internal",
+      "issue": "The four later tables and external ownership/epoch markers lack complete versioned representations, constraints, locations and recovery predicates. Phrases such as compare evidence or reject lost effects do not determine whether a backup or half-published marker is safe.",
+      "recommendation": "Specify all columns/relations/states for profile_runtime, connection_bindings, capacity_claims and namespace_events; exact marker paths/formats; transaction/filesystem ordering; and a decision table for every intermediate publication state. Make backup rejection and pending publication deterministic.",
+      "validation": "Fixtures must cover committed-but-unpublished epochs, stale backups, interrupted handoffs, contradictory markers and unavailable volume evidence without inventory-authorized mutation."
+    },
+    {
+      "id": "ELD-14",
+      "severity": "Major",
+      "title": "Specify provisioning stages, receipts and replay decisions",
+      "raw": [
+        "S9-READY-04"
+      ],
+      "line": 987,
+      "scope": "T7 evidence contracts; T10 provisioning; stage runner and scenario fixtures",
+      "authority": "Internal protocol specification; preserve the accepted explicit-update policy.",
+      "status": "open_internal",
+      "issue": "The plan selects jobs, receipts and conservative reconciliation but leaves the shipped stage catalogue, receipt format, owned LXD configuration and stage-specific completion/replay predicates undefined.",
+      "recommendation": "For each create/update stage, specify immutable ID, inputs, prerequisites, ordered effects, owned settings, receipt fields and satisfied/active/not-applied/partial/unknown evidence. Define native-template stage mapping and expected continuation after interruption. Coordinate Docker composition with ELD-09; release image values and measured capacity bounds remain qualification inputs.",
+      "validation": "Interrupt between package installation and LXD pool/network setup. Reconciliation must identify the actual completed stage and permitted continuation without replaying unrelated scripts."
+    },
+    {
+      "id": "ELD-15",
+      "severity": "Nit",
+      "title": "Separate architecture from implementation recipes",
+      "raw": [
+        "S5-ZOOM-03",
+        "S8-ZOOM-05"
+      ],
+      "line": 543,
+      "scope": "Schema/connection/publication details and repeated alternatives before DetailedRange",
+      "authority": "Internal document organization; address alongside the missing contract appendices.",
+      "status": "open_internal",
+      "issue": "Low-level recipes occupy the architecture narrative while the detailed plan mostly lists files. This makes selected ownership/runtime contracts harder to locate.",
+      "recommendation": "Retain component boundaries, invariants and flows in the main narrative. Move normative schemas and publication/restore recipes into the detailed plan or linked contract appendices, and consolidate repeated alternatives.",
+      "validation": "Check links, heading hierarchy and traceability after moving sections; retain every safety invariant and acceptance requirement."
+    },
+    {
+      "id": "ELD-16",
+      "severity": "Nit",
+      "title": "Calibrate the Ubuntu support claim",
+      "raw": [
+        "S7-STYLE-03"
+      ],
+      "line": 21,
+      "scope": "Overview guest-support wording",
+      "authority": "Factual documentation correction.",
+      "status": "applied_not_reaudited",
+      "issue": "Calling Ubuntu the tested guest implied validation that has not occurred.",
+      "recommendation": "Applied: identify Ubuntu as the selected guest for initial qualification.",
+      "validation": "Document wording now matches the unexecuted runtime qualification status."
+    },
+    {
+      "id": "ELD-17",
+      "severity": "Nit",
+      "title": "Describe SQLite as a selected trade-off",
+      "raw": [
+        "S7-STYLE-04"
+      ],
+      "line": 1120,
+      "scope": "Alternatives summary",
+      "authority": "Factual documentation correction.",
+      "status": "applied_not_reaudited",
+      "issue": "The summary implied cross-record consistency intrinsically requires SQLite, although the earlier comparison describes a file/journal alternative.",
+      "recommendation": "Applied: SQLite supplies the selected commit mechanism; authoritative JSON would need an application-owned commit/recovery protocol.",
+      "validation": "The rationale is consistent with the retained T4 alternatives."
+    },
+    {
+      "id": "ELD-18",
+      "severity": "Nit",
+      "title": "Remove repeated drafting-only execution disclaimers",
+      "raw": [
+        "S7-STYLE-05",
+        "S8-ZOOM-05"
+      ],
+      "line": 349,
+      "scope": "Repeated section-end no-execution statements",
+      "authority": "Internal editorial correction.",
+      "status": "applied_not_reaudited",
+      "issue": "Repeated global no-test/no-change statements obscured section-specific qualification requirements without adding an operator decision.",
+      "recommendation": "Applied: remove the repeated global statements while retaining the document-wide evidence boundary and concrete local validation requirements.",
+      "validation": "No operational invariant or qualification gate was removed."
+    },
+    {
+      "id": "ELD-19",
+      "severity": "Nit",
+      "title": "Keep logging claims bounded to controlled fields and known secrets",
+      "raw": [
+        "S9-STYLE-02"
+      ],
+      "line": 1165,
+      "scope": "Process-runner manifest and logging traceability row",
+      "authority": "Alignment with accepted GF-10 logging policy.",
+      "status": "applied_not_reaudited",
+      "issue": "Secret-safe errors and secret exclusion could imply universal sanitization beyond the accepted policy.",
+      "recommendation": "Applied: specify allowlisted classified errors excluding known credential values/raw subprocess details, and known-secret exclusion. Raw capture remains opt-in.",
+      "validation": "The summary wording matches T12 and the approved logging policy."
+    }
+  ],
+  "raw_counts": {
+    "Blocker": 0,
+    "Major": 22,
+    "Nit": 6
+  },
+  "consolidated_counts": {
+    "Blocker": 0,
+    "Major": 14,
+    "Nit": 5
+  },
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 11,
+    "Nit": 1
+  },
+  "applied_count": 7,
+  "traceability": {
+    "S5-ZOOM-01": [
+      "ELD-01"
+    ],
+    "S5-ZOOM-02": [
+      "ELD-02"
+    ],
+    "S5-ZOOM-03": [
+      "ELD-15"
+    ],
+    "S7-DESIGN-01": [
+      "ELD-03"
+    ],
+    "S7-DESIGN-02": [
+      "ELD-04"
+    ],
+    "S7-DESIGN-03": [
+      "ELD-02"
+    ],
+    "S7-DESIGN-04": [
+      "ELD-05"
+    ],
+    "S7-STYLE-01": [
+      "ELD-06"
+    ],
+    "S7-STYLE-02": [
+      "ELD-07"
+    ],
+    "S7-STYLE-03": [
+      "ELD-16"
+    ],
+    "S7-STYLE-04": [
+      "ELD-17"
+    ],
+    "S7-STYLE-05": [
+      "ELD-18"
+    ],
+    "S8-ZOOM-01": [
+      "ELD-01"
+    ],
+    "S8-ZOOM-02": [
+      "ELD-02"
+    ],
+    "S8-ZOOM-03": [
+      "ELD-03",
+      "ELD-05"
+    ],
+    "S8-ZOOM-04": [
+      "ELD-04"
+    ],
+    "S8-ZOOM-05": [
+      "ELD-15",
+      "ELD-18"
+    ],
+    "S9-CODE-01": [
+      "ELD-08"
+    ],
+    "S9-CODE-02": [
+      "ELD-02"
+    ],
+    "S9-CODE-03": [
+      "ELD-09"
+    ],
+    "S9-CODE-04": [
+      "ELD-10"
+    ],
+    "S9-READY-01": [
+      "ELD-11"
+    ],
+    "S9-READY-02": [
+      "ELD-12"
+    ],
+    "S9-READY-03": [
+      "ELD-13"
+    ],
+    "S9-READY-04": [
+      "ELD-14"
+    ],
+    "S9-READY-05": [
+      "ELD-01"
+    ],
+    "S9-STYLE-01": [
+      "ELD-06"
+    ],
+    "S9-STYLE-02": [
+      "ELD-19"
+    ]
+  }
+}

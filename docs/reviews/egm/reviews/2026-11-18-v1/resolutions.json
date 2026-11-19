@@ -1,0 +1,165 @@
+{
+  "round": "2026-11-18-v1",
+  "status": "resolved",
+  "targets": [
+    "FEATURES.md",
+    "concepts_brief.md"
+  ],
+  "line_range": "full file",
+  "accepted": [
+    "GF-01",
+    "GF-02",
+    "GF-10",
+    "GF-03",
+    "GF-04",
+    "GF-05",
+    "GF-06",
+    "GF-07",
+    "GF-08",
+    "GF-09",
+    "GF-11"
+  ],
+  "pending": [],
+  "next": null,
+  "author_directions": [
+    "One optional profile per VM; reject parent/child overlaps with different profiles.",
+    "Finish resolving review findings before implementation design.",
+    "Separate easy-lima repository under github/ucgeorge-canonical; initialize local Git.",
+    "Standalone installable binary usable from any CWD; no make local compatibility entry points.",
+    "One storage root for v1, including adopted VMs. No automatic moves.",
+    "Raw output capture is opt-in. Operational logs are enabled by default, with known secrets excluded.",
+    "Environment updates require an explicit action with a preview. Updating easy-lima or starting a VM must never automatically upgrade its tools or presets.",
+    "Use explicit rebinding when a project moves, preserving its VM, disk, and SSH alias. Reject conflicts and make interrupted rebinding recoverable.",
+    "Adoption requires exclusive ownership transfer to easy-lima, metadata backups, and recoverable handoffs. Reject adoption or downgrades that would create conflicting owners.",
+    "Keep profile management independent of VM startup, preserve the complete identity setup during adoption, and only change settings owned by easy-lima. Report conflicts with user edits.",
+    "Reconcile the previous attempt before retrying, reuse the existing VM, and stop with recovery instructions if its state remains unknown. Keep arbitrary script rollback out of v1.",
+    "Keep diagnostics read-only with useful partial results and clear, separate statuses for each check. Repairs are separate, explicit actions.",
+    "Check all creation destinations and account for shared filesystem capacity. Keep future VM growth explicitly unreserved.",
+    "Use selective reuse as the starting point, with fresh implementation where it offers a clear advantage. Close the review and move on to implementation design."
+  ],
+  "findings": [
+    {
+      "id": "GF-01",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F7 and release acceptance check 3 in FEATURES.md",
+      "justification": "The author chose one profile per VM and rejection of parent/child overlaps with different profiles. This resolves the ambiguity without adding descendant credential routing. The original warning/acknowledgment alternative is rejected.",
+      "edit": "A VM uses at most one selected profile throughout its mounted project tree; Git integration remains optional. Descendant registrations do not switch that VM\u2019s identity. Reject known parent/child source overlaps between registered projects with different profiles during creation, adoption, rebinding, and profile changes. Compare resolved source paths, report the conflicting projects/profiles, and identify which repositories an identity check actually examined."
+    },
+    {
+      "id": "GF-02",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F5 storage boundary, F9 adoption acceptance, and release acceptance check 9 in FEATURES.md",
+      "justification": "The author accepted one VM storage root for v1, including adopted VMs, and no automatic moves. This resolves the adoption/storage conflict without grandfathered locations. The configured root remains independent of the current working directory.",
+      "edit": "All new and adopted VMs use one configured managed VM storage root, independent of the current working directory. Adoption keeps disks in place and requires their existing storage root to match the configured root. During initial setup, before other VMs are managed, the user may explicitly select the existing location as that root. Otherwise, a conflicting adoption stops before ownership or metadata changes and shows both paths. It cannot silently switch roots, orphan existing registrations, or add an exception for another location. No automatic moves.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-03",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F4 environment-update boundary, F9 adoption acceptance, and release acceptance check 11 in FEATURES.md",
+      "justification": "The author accepted an explicit environment-update action with a preview and prohibited automatic tool or preset upgrades when updating easy-lima or starting a VM. Recording the environment inputs and provisioning revision makes that boundary survive retries and adoption without substituting the current binary\u2019s defaults.",
+      "edit": "Updating easy-lima or starting a VM never automatically upgrades its tools or presets. Each VM retains its resolved template/creation inputs and applied provisioning revision independently of the installed binary. Interrupted setup resumes its recorded operation instead of substituting current defaults. Applying newer tools or presets requires an explicit environment-update action with a preview before changes run. The preview identifies requested changes and known restart or recreation requirements. Adoption preserves completed legacy setup and distinguishes it from incomplete or unknown setup; unknown provisioning history requires diagnosis instead of automatically applying the latest preset.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-04",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F3 registration/rebinding, F9 preserved bindings, and release acceptance check 7 in FEATURES.md",
+      "justification": "The author accepted an explicit rebind workflow that preserves the VM, guest disk, and SSH alias when a project moves, rejects conflicts, and remains recoverable if interrupted. Stable registration separates the VM association from project paths, CWD, and application location, including bindings retained during adoption.",
+      "edit": "A persistent registration identifies the actual Lima instance and SSH alias independently of the project path, current working directory, and application installation location. CLI and TUI operations use that registration. Moving or renaming a project uses an explicit rebind workflow that updates its source association while preserving the VM, guest disk, and SSH alias. Reject conflicting registrations and identity overlaps before changing the association. Interrupted rebinding retains ownership and enough information about the old/new source and mount state to diagnose and recover the same instance without creating a duplicate. Adoption preserves original instance names and aliases as registered bindings.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-05",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F9 adoption ownership and release acceptance check 9 in FEATURES.md",
+      "justification": "The author accepted exclusive ownership transfer to easy-lima, metadata backups, and recoverable handoffs, and requires rejection of adoption or downgrades that would create conflicting owners. This closes the two-manager risk without a make local compatibility entry point. Metadata backups support recovery but do not establish safe rollback of later changes.",
+      "edit": "Adoption explicitly transfers exclusive management ownership of an instance to easy-lima. Back up affected metadata and retire the old helper\u2019s ownership of that instance before easy-lima can mutate it. Record handoff progress and the last established ownership state so interruptions can be diagnosed and recovered against the same VM. Refuse adoption if exclusive ownership cannot be established. Reject downgrades or metadata-restoration operations that would create conflicting owners; a backup does not by itself make a downgrade safe. Preserve the existing instance, disk, and connection identifiers throughout the handoff. This transfer introduces no compatibility launcher.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-06",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F7 profile administration/migration, F9 usable identity preservation, and release acceptance check 3 in FEATURES.md",
+      "justification": "The author accepted profile management independent of VM startup, preservation of the complete identity setup during adoption, and modifications restricted to easy-lima-owned settings with user-edit conflicts reported. Preserving a fingerprint alone does not establish usable authentication/signing; the credential, agent, SSH, and guest configuration must remain coherent without affecting unrelated profiles.",
+      "edit": "Profile creation, import, repair, and agent administration are independent of VM startup and do not automatically start or provision VMs. Scope each profile\u2019s agent and credential handling independently; an unavailable profile must not disrupt unrelated profiles or profile-free projects. Adoption preserves the complete usable identity setup: the existing key and fingerprint, its unlock mechanism or reference, agent binding, managed SSH settings, and managed guest Git identity and signing settings. Private keys remain on the host. Profile replacement or removal changes only settings owned by easy-lima, preserves user-owned settings, and reports conflicts with user edits instead of overwriting them. Apply changes only to explicitly affected projects; the existing stop/reconnect allowance remains sufficient for profile changes.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-07",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F3 retry rule, F8 recovery boundary, and release acceptance check 6 in FEATURES.md",
+      "justification": "The author requires reconciliation before retrying, reuse of the existing VM, and stopping with recovery instructions if the earlier attempt\u2019s state remains unknown. Durable stage evidence supports that decision without assuming a disconnected guest process stopped. Arbitrary script rollback remains outside v1.",
+      "edit": "Persist each operation attempt\u2019s instance association, intended inputs or configuration references, last confirmed completed stage, outcome, and relevant log locations. Keep this operational evidence available without opt-in raw capture and exclude known secrets. A timeout, disconnection, or unobserved result leaves the outcome unknown until reconciled. Before retrying, determine whether the previous attempt is still active or has completed, and reuse its recorded VM and inputs. Do not overlap an active attempt or allocate a replacement VM merely because observation failed. If the prior state remains unknown, stop with recovery instructions instead of retrying. Automatic rollback of arbitrary guest scripts is outside v1.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-08",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F8 diagnostic boundary and release acceptance check 12 in FEATURES.md",
+      "justification": "The author accepted read-only diagnostics with useful partial results and separate statuses for each check, and requires repairs to be explicit actions. Keeping locally recorded information available and distinguishing VM readiness, local identity checks, and online verification prevents unavailable prerequisites from producing misleading absence, mismatch, or success reports.",
+      "edit": "Inspection and doctor are read-only and return useful partial results when prerequisites are unavailable. Report readable local registrations, expected paths, and log locations even when Lima, storage, SSH, or a profile cannot be reached, distinguishing recorded information from observed runtime state. One malformed record must not hide other environments. Give each check its own result, distinguishing success, failure, unavailable, skipped, and unknown as appropriate; inaccessible or unknown state must not be reported as not created. Separate VM readiness, profile/host-agent readiness, guest forwarding, local signing, external transport/authentication, and expected-account verification. GitHub unavailability leaves account verification unverified, not mismatched or successful. Diagnosis must not implicitly start VMs, provision environments, or repair settings; repairs are separate, explicit actions. Partial diagnostic results continue to exclude known secrets and do not enable raw output capture.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-09",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F5 creation-capacity boundary and release acceptance check 5 in FEATURES.md",
+      "justification": "The author accepted checks across all creation destinations, accounting for shared filesystem capacity, with future VM growth explicitly unreserved. Conservative requirements for shipped presets replace the fixed-threshold assumption while keeping current allocation, logical disk limits, and future workload growth distinct. This strengthens creation checks without introducing capacity reservation or a resource scheduler.",
+      "edit": "Check conservative creation requirements for each shipped preset against the actual filesystems used for downloads, temporary files, cache, and VM allocation. Account for destinations sharing the same free-space budget by evaluating their combined requirements. Reject known insufficient-space conditions before download or allocation. Report current allocation and logical disk maximum separately, and explicitly identify future VM growth as unreserved. Passing the creation check does not reserve capacity for arbitrary later workloads.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-10",
+      "severity": "Major",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "F8 logging boundary and release acceptance check 10 in FEATURES.md",
+      "justification": "The author chose operational logs enabled by default with known secrets excluded, and explicit opt-in for raw output capture. This preserves ordinary diagnostic context without treating arbitrary command output as safe to retain or share. Existing Lima/guest logs remain a separately identified boundary.",
+      "edit": "Operational logs record steps, results, and useful failure details by default, excluding known secrets and unnecessary credential-bearing arguments or environment values. Raw command and provisioning output is displayed normally, but easy-lima saves it only when the user explicitly enables capture. Captured files are accessible only to the current user and are not automatically included in shareable diagnostics. Raw output may contain sensitive values; there is no guarantee of universal sanitization. Identify separately any output already retained by Lima or the guest and treat it as potentially sensitive. Access and retention mechanisms remain implementation-design work.",
+      "decision_date": "2026-11-18"
+    },
+    {
+      "id": "GF-11",
+      "severity": "Nit",
+      "category": "PROPOSE FIX",
+      "status": "accepted and applied to specification",
+      "location": "Alternatives Weighed in concepts_brief.md and Implementation-design starting point in FEATURES.md",
+      "justification": "The author accepted selective reuse as the starting point, with fresh implementation where it offers a clear advantage, and requested closure of the review. Recording the comparison preserves useful prototype knowledge while allowing the standalone application\u2019s distribution, portability, maintainability, and testing needs to determine its implementation. This does not select a language, dependency, or full rewrite in advance.",
+      "edit": "Plain Lima templates and saved SSH settings provide VM mechanisms but do not by themselves supply the agreed project browser, persistent project associations, deliberate storage workflow, and isolated identity selection. The standalone application adds those workflows while delegating VM operations to Lima. Use selective reuse of portable prototype behavior and suitable code as the starting point for implementation design, with fresh implementation where it offers a clear advantage. Evaluate distribution, portability, maintainability, and testing trade-offs before selecting the language and dependencies. The prototype\u2019s Makefile, machine-specific assumptions, and path-derived identities do not define the application. Existing behavior and tests are evidence to assess, not proof that the v1 guarantees already pass.",
+      "decision_date": "2026-11-18"
+    }
+  ],
+  "resolved_date": "2026-11-18",
+  "outcome_counts": {
+    "accepted": 11,
+    "contested": 0,
+    "escalated": 0,
+    "declined": 0,
+    "unaddressed": 0
+  },
+  "handoff": {
+    "phase": "implementation design",
+    "artifact": "design_draft.md",
+    "authorization": "The author requested implementation design after accepting the final finding.",
+    "authorization_date": "2026-11-18"
+  }
+}

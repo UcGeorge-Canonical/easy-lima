@@ -1,0 +1,158 @@
+{
+  "review_id": "2026-11-19-design-r1",
+  "status": "resolved_pending_reaudit",
+  "date": "2026-11-19",
+  "preset": "uninterrupted",
+  "authorization": "Author approved the consolidated experience and said to proceed with the announced fresh Goldfish review. Consolidated execution follows the standing delegation of internal workflow choices.",
+  "target": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/.egm/reviews/2026-11-19-design-r1/inputs/design_draft.md",
+  "source_target": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/design_draft.md",
+  "feature_range": [
+    1,
+    1129
+  ],
+  "detailed_range": [
+    1130,
+    1239
+  ],
+  "input_hashes": {
+    "FEATURES.md": "ba0c3592dbc02f13235bec88b73c4fda1b46983697692e380b8a8bce179b8e95",
+    "README.md": "5196407cdad142d0b533ccbf8eae2fc74436c9bc5ee96bd6b1be43dd87cced7f",
+    "UX_PROPOSAL.md": "bb9fc76588d0f32a5a5d593db9e2baafbce17de5358a7ccbc1488ddc0df3c039",
+    "concepts_brief.md": "cff0f8d0129b81a8d75360d8be92d4967674f69862a4a43b90a4f25586b2e486",
+    "design_draft.md": "7bc37e738c0fc7d08ebcb4dbb8d559fb869e2f3e024896da5385b61d6e29f1d8",
+    "goldfish_review_report.md": "2f1f27b8e3113aaa0f03eb16fcbe4db9b0e29d8be661006cb75f1cec3a6e2a2f"
+  },
+  "local_linked_context": [
+    "FEATURES.md",
+    "concepts_brief.md",
+    "goldfish_review_report.md",
+    "UX_PROPOSAL.md"
+  ],
+  "external_reference_urls": [
+    "https://lima-vm.io/docs/config/environment-variables/",
+    "https://lima-vm.io/docs/usage/",
+    "https://lima-vm.io/docs/reference/limactl_list/",
+    "https://lima-vm.io/docs/reference/limactl_show-ssh/",
+    "https://go.dev/doc/tutorial/compile-install",
+    "https://go.dev/doc/install/source",
+    "https://pyinstaller.org/en/stable/operating-mode.html",
+    "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html",
+    "https://doc.rust-lang.org/book/ch06-02-match.html",
+    "https://doc.rust-lang.org/rustc/platform-support.html",
+    "https://go.dev/doc/modules/layout",
+    "https://pkg.go.dev/os/exec",
+    "https://lima-vm.io/docs/dev/internals/",
+    "https://lima-vm.io/docs/reference/limactl_create/",
+    "https://lima-vm.io/docs/reference/limactl_validate/",
+    "https://lima-vm.io/docs/reference/limactl_edit/",
+    "https://lima-vm.io/docs/reference/limactl_stop/",
+    "https://lima-vm.io/docs/reference/limactl_delete/",
+    "https://lima-vm.io/docs/reference/limactl/",
+    "https://lima-vm.io/docs/reference/limactl_shell/",
+    "https://lima-vm.io/docs/reference/limactl_start/",
+    "https://github.com/lima-vm/lima/blob/v2.2.1/cmd/limactl/start.go",
+    "https://pkg.go.dev/github.com/lima-vm/lima/v2@v2.2.1/pkg/instance",
+    "https://www.sqlite.org/transactional.html",
+    "https://www.sqlite.org/atomiccommit.html",
+    "https://www.sqlite.org/wal.html",
+    "https://www.sqlite.org/uri.html",
+    "https://toml.io/en/v1.0.0",
+    "https://yaml.org/spec/1.2.2/",
+    "https://specifications.freedesktop.org/basedir/latest/",
+    "https://pkg.go.dev/os",
+    "https://www.sqlite.org/foreignkeys.html",
+    "https://www.sqlite.org/lang_createtable.html",
+    "https://www.sqlite.org/partialindex.html",
+    "https://www.sqlite.org/lang_transaction.html",
+    "https://www.sqlite.org/rescode.html",
+    "https://www.sqlite.org/backup.html",
+    "https://www.sqlite.org/pragma.html",
+    "https://www.sqlite.org/c3ref/wal_autocheckpoint.html",
+    "https://www.sqlite.org/c3ref/c_dbconfig_defensive.html",
+    "https://www.sqlite.org/c3ref/wal_checkpoint_v2.html",
+    "https://pkg.go.dev/database/sql",
+    "https://pkg.go.dev/modernc.org/sqlite",
+    "https://gitlab.com/cznic/sqlite/-/raw/v1.62.0/sqlite.go",
+    "https://pkg.go.dev/github.com/ncruces/go-sqlite3",
+    "https://pkg.go.dev/github.com/ncruces/go-sqlite3/driver",
+    "https://github.com/ncruces/go-sqlite3/blob/v0.37.0/vfs/README.md",
+    "https://pkg.go.dev/github.com/mattn/go-sqlite3",
+    "https://man.openbsd.org/ssh-agent",
+    "https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html",
+    "https://man.openbsd.org/ssh_config",
+    "https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=mac&tool=webui",
+    "https://developer.apple.com/documentation/security/keychain-services?changes=__1",
+    "https://specifications.freedesktop.org/secret-service/latest/unlocking.html",
+    "https://github.com/lima-vm/lima/blob/v2.2.1/templates/default.yaml",
+    "https://github.com/lima-vm/lima/blob/v2.2.1/pkg/hostagent/hostagent.go",
+    "https://git-scm.com/docs/git-config",
+    "https://pkg.go.dev/golang.org/x/crypto/ssh",
+    "https://pkg.go.dev/golang.org/x/crypto/ssh/agent",
+    "https://developer.apple.com/documentation/security/ksecuseauthenticationuifail?changes=__4&language=objc",
+    "https://specifications.freedesktop.org/secret-service/latest-single/",
+    "https://pkg.go.dev/github.com/godbus/dbus/v5",
+    "https://github.com/lima-vm/lima/blob/v2.2.1/pkg/store/store.go",
+    "https://github.com/lima-vm/lima/blob/v2.2.1/pkg/downloader/downloader.go",
+    "https://snapcraft.io/lxd",
+    "https://snapcraft.io/juju",
+    "https://snapcraft.io/docs/how-to-guides/manage-snaps/manage-updates/",
+    "https://pkg.go.dev/github.com/BurntSushi/toml",
+    "https://pkg.go.dev/go.yaml.in/yaml/v3",
+    "https://pkg.go.dev/github.com/spf13/cobra",
+    "https://pkg.go.dev/charm.land/bubbletea/v2",
+    "https://go.dev/doc/devel/release",
+    "https://apache.org/licenses/LICENSE-2.0.html"
+  ],
+  "external_reference_policy": "Not bulk-loaded as baseline context. Primary-source verification is allowed where a concrete technical finding needs it; reviewers must identify actual sources used and limitations.",
+  "prototype_source_scope": "Read-only .local-launcher source and tests explicitly referenced by the design; no live state, keys, credential stores, VMs, host SSH configuration, or other projects.",
+  "stages": [
+    {
+      "id": 5,
+      "status": "completed"
+    },
+    {
+      "id": 6,
+      "status": "completed"
+    },
+    {
+      "id": 7,
+      "status": "completed"
+    },
+    {
+      "id": 8,
+      "status": "completed"
+    },
+    {
+      "id": 9,
+      "status": "completed"
+    }
+  ],
+  "isolation": "Every reviewer uses a new agent with fork_turns=none; filesystem/instruction-file isolation is not asserted.",
+  "reviewer_runs_completed": 9,
+  "raw_counts": {
+    "Blocker": 0,
+    "Major": 22,
+    "Nit": 6
+  },
+  "consolidated_counts": {
+    "Blocker": 0,
+    "Major": 14,
+    "Nit": 5
+  },
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 0,
+    "Nit": 0
+  },
+  "applied_document_corrections": 6,
+  "converged": false,
+  "runtime_validated": false,
+  "report": "/Volumes/Nebula/dev/Canonical/local/github/ucgeorge-canonical/easy-lima/consolidated_review_report.md",
+  "applied_design_resolutions": 13,
+  "applied_findings": 19,
+  "latest_resolution": "resolutions/ELD-11-12/decision.json",
+  "related_internal_resolutions": "resolutions/ELD-09-15/decision.json",
+  "pending_user_decision": null,
+  "reaudit": "2026-11-19-design-r2"
+}

@@ -1,0 +1,186 @@
+{
+  "round": "2026-11-18-v1",
+  "mode": "BRAINSTORM",
+  "status": "complete",
+  "recommendations": "pending; not accepted scope amendments",
+  "raw_totals": {
+    "Blocker": 0,
+    "Major": 19,
+    "Nit": 2
+  },
+  "consolidated_totals": {
+    "Blocker": 0,
+    "Major": 10,
+    "Nit": 1
+  },
+  "findings": [
+    {
+      "id": "GF-01",
+      "severity": "Major",
+      "disposition": "author decision needed",
+      "raw_findings": [
+        {
+          "id": "DESIGN-01",
+          "severity": "Major"
+        },
+        {
+          "id": "ZOOM-03",
+          "severity": "Major"
+        },
+        {
+          "id": "COMPREHENSION-01",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-02",
+      "severity": "Major",
+      "disposition": "author decision needed",
+      "raw_findings": [
+        {
+          "id": "COMPREHENSION-02",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-03",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "DESIGN-02",
+          "severity": "Major"
+        },
+        {
+          "id": "ZOOM-02",
+          "severity": "Major"
+        },
+        {
+          "id": "READINESS-02",
+          "severity": "Major"
+        },
+        {
+          "id": "STRUCTURAL-02",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-04",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "ZOOM-01",
+          "severity": "Major"
+        },
+        {
+          "id": "STRUCTURAL-01",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-05",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "DESIGN-03",
+          "severity": "Major"
+        },
+        {
+          "id": "READINESS-01",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-06",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "READINESS-03",
+          "severity": "Major"
+        },
+        {
+          "id": "STRUCTURAL-03",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-07",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "CODEBASE-02",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-08",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "CODEBASE-01",
+          "severity": "Major"
+        },
+        {
+          "id": "CODEBASE-04",
+          "severity": "Major"
+        },
+        {
+          "id": "COMPREHENSION-03",
+          "severity": "Nit"
+        }
+      ]
+    },
+    {
+      "id": "GF-09",
+      "severity": "Major",
+      "disposition": "implementation-design requirement",
+      "raw_findings": [
+        {
+          "id": "DESIGN-04",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-10",
+      "severity": "Major",
+      "disposition": "author decision needed",
+      "raw_findings": [
+        {
+          "id": "CODEBASE-03",
+          "severity": "Major"
+        }
+      ]
+    },
+    {
+      "id": "GF-11",
+      "severity": "Nit",
+      "disposition": "advisory",
+      "raw_findings": [
+        {
+          "id": "ZOOM-04",
+          "severity": "Nit"
+        }
+      ]
+    }
+  ],
+  "rejected_findings": [],
+  "downgraded_findings": [],
+  "notes": [
+    "No whole raw finding was rejected or downgraded.",
+    "COMPREHENSION-03 retains raw Nit severity and is merged into GF-08 because it overlaps a broader Major operational risk.",
+    "Implementation-design requirements do not introduce a concept-readiness gate."
+  ]
+}

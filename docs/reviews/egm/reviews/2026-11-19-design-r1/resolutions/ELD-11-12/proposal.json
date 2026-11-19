@@ -1,0 +1,18 @@
+{
+  "findings": [
+    "ELD-11",
+    "ELD-12"
+  ],
+  "date": "2026-11-19",
+  "status": "drafted_awaiting_author_review",
+  "contract": "INTERFACE_V1.md",
+  "authority": "Author retains decisions directly affecting user interface/experience.",
+  "choices": [
+    "Complete TOML field/default/validation contract",
+    "Exact public flags, profile assignment and agent migration commands",
+    "Mount/port TOML input files and bounded secret file-descriptor input",
+    "Versioned command-family results, stable codes and mixed-result exit precedence"
+  ],
+  "approved": false,
+  "runtime_validation": "not_run"
+}

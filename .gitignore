@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.local-state/
+local-vms.toml
+/.cache/
+/bin/
+/dist/
+/coverage.out
+/test-results/
+*.test

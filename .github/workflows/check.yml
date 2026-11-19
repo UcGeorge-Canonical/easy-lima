@@ -1,0 +1,45 @@
+name: Check
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: false
+      - run: make check test-race test-contracts
+      - run: make licenses
+      - run: git diff --exit-code -- go.mod go.sum THIRD_PARTY_NOTICES.txt
+  release-build:
+    strategy:
+      matrix:
+        include:
+          - {os: ubuntu-latest, target: linux/amd64}
+          - {os: ubuntu-latest, target: linux/arm64}
+          - {os: macos-latest, target: darwin/arm64}
+          - {os: macos-latest, target: darwin/amd64}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: false
+      - run: make licenses release TARGET=${{ matrix.target }} VERSION=dev

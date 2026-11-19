@@ -1,0 +1,169 @@
+{
+  "preset": "uninterrupted",
+  "round": 1,
+  "reviewers": [
+    {
+      "stage": 5,
+      "reviewer": "egm-zoom-out",
+      "agent": "/root/design_r1_stage5_zoom",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/zoom_out.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/zoom-out-standard.md",
+      "scope": "full file",
+      "read_only": true,
+      "raw_report": "raw/stage5-zoom-out.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 2,
+        "Nit": 1
+      }
+    },
+    {
+      "stage": 6,
+      "reviewer": "egm-comprehension",
+      "agent": "/root/design_r1_stage6_comprehension",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/comprehension.md",
+      "standard": null,
+      "scope": "full target only",
+      "read_only": true,
+      "raw_report": "raw/stage6-comprehension.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 0,
+        "Nit": 0
+      }
+    },
+    {
+      "stage": 7,
+      "reviewer": "egm-design",
+      "agent": "/root/design_r1_stage7_critic",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/design_critic.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/feature-spec-standard.md",
+      "scope": "FeatureRange 1\u20131129",
+      "read_only": true,
+      "raw_report": "raw/stage7-design.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 4,
+        "Nit": 0
+      }
+    },
+    {
+      "stage": 7,
+      "reviewer": "egm-structural",
+      "agent": "/root/design_r1_stage7_structural",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/structural.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/feature-spec-standard.md",
+      "scope": "FeatureRange 1\u20131129",
+      "read_only": true,
+      "raw_report": "raw/stage7-structural.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 0,
+        "Nit": 0
+      }
+    },
+    {
+      "stage": 7,
+      "reviewer": "egm-style",
+      "agent": "/root/design_r1_stage7_style",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/style.md",
+      "standard": null,
+      "scope": "FeatureRange 1\u20131129",
+      "read_only": true,
+      "raw_report": "raw/stage7-style.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 2,
+        "Nit": 3
+      }
+    },
+    {
+      "stage": 8,
+      "reviewer": "egm-zoom-out",
+      "agent": "/root/design_r1_stage8_zoom",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/zoom_out.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/zoom-out-standard.md",
+      "scope": "full file with prior stage reports",
+      "read_only": true,
+      "raw_report": "raw/stage8-zoom-out.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 4,
+        "Nit": 1
+      },
+      "new_independent_findings": 0
+    },
+    {
+      "stage": 9,
+      "reviewer": "egm-implementation-readiness",
+      "agent": "/root/design_r1_stage9_readiness",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/implementation_readiness.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/implementation-readiness-standard.md",
+      "scope": "DetailedRange 1130\u20131239",
+      "read_only": true,
+      "raw_report": "raw/stage9-readiness.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 5,
+        "Nit": 0
+      }
+    },
+    {
+      "stage": 9,
+      "reviewer": "egm-codebase-details",
+      "agent": "/root/design_r1_stage9_codebase",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/codebase_details.md",
+      "standard": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/resources/document_standards/implementation-readiness-standard.md",
+      "scope": "DetailedRange 1130\u20131239",
+      "read_only": true,
+      "raw_report": "raw/stage9-codebase.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 4,
+        "Nit": 0
+      }
+    },
+    {
+      "stage": 9,
+      "reviewer": "egm-style",
+      "agent": "/root/design_r1_stage9_style",
+      "fork_turns": "none",
+      "status": "completed",
+      "persona": "/Users/ucgeorge/.codex/plugins/cache/openai-curated-remote/egm/0.1.1/agents/style.md",
+      "standard": null,
+      "scope": "DetailedRange 1130\u20131239",
+      "read_only": true,
+      "raw_report": "raw/stage9-style.md",
+      "read_acknowledged": true,
+      "counts": {
+        "Blocker": 0,
+        "Major": 1,
+        "Nit": 1
+      }
+    }
+  ]
+}

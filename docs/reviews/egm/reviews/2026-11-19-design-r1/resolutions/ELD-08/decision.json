@@ -1,0 +1,21 @@
+{
+  "finding": "ELD-08",
+  "date": "2026-11-19",
+  "status": "applied_to_design",
+  "author": "George Uche-Umeh",
+  "user_reply": "Yep",
+  "approved_rule": "Adoption previews a graceful stop of a running legacy VM, proves the same VM and legacy work are stopped, and restores its prior running state only after verified handoff and supported recorded startup. Already-stopped VMs stay stopped; unknown state blocks cutover and no force escalation is automatic.",
+  "internal_mechanisms": "Positive same-instance quiescence; old/new guards; exact metadata backups; active-record retirement; recoverable ownership publication; separate ownership/restoration results.",
+  "contract": "ADOPTION.md",
+  "independent_reaudit": "pending",
+  "runtime_validation": "not_run",
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 2,
+    "Nit": 0
+  },
+  "next_user_facing_findings": [
+    "ELD-11",
+    "ELD-12"
+  ]
+}

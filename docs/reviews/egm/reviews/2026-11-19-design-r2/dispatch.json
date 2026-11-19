@@ -1,0 +1,70 @@
+{
+  "mode": "targeted_final_reaudit",
+  "reviewers": [
+    {
+      "persona": "egm-design",
+      "task": "/root/final_design_consistency",
+      "status": "completed",
+      "fork_turns": "none",
+      "standard": "feature-spec-standard",
+      "report": "raw/design.md",
+      "counts": {
+        "Blocker": 0,
+        "Major": 2,
+        "Nit": 0
+      },
+      "read_completion_reported": true,
+      "correction_verification": "passed",
+      "verification_mode": "focused_followup_same_reviewer_not_new_goldfish_round"
+    },
+    {
+      "persona": "egm-implementation-readiness",
+      "task": "/root/final_readiness",
+      "status": "completed",
+      "fork_turns": "none",
+      "standard": "implementation-readiness-standard",
+      "report": "raw/readiness.md",
+      "counts": {
+        "Blocker": 0,
+        "Major": 1,
+        "Nit": 0
+      },
+      "read_completion_reported": true,
+      "correction_verification": "passed",
+      "verification_mode": "focused_followup_same_reviewer_not_new_goldfish_round"
+    },
+    {
+      "persona": "egm-codebase-details",
+      "task": "/root/final_codebase",
+      "status": "completed",
+      "fork_turns": "none",
+      "standard": "implementation-readiness-standard",
+      "report": "raw/codebase.md",
+      "counts": {
+        "Blocker": 0,
+        "Major": 1,
+        "Nit": 0
+      },
+      "read_completion_reported": true,
+      "correction_verification": "passed",
+      "verification_mode": "focused_followup_same_reviewer_not_new_goldfish_round"
+    },
+    {
+      "persona": "egm-style",
+      "status": "completed",
+      "fork_turns": "none",
+      "standard": null,
+      "task": "/root/final_style",
+      "report": "raw/style.md",
+      "counts": {
+        "Blocker": 0,
+        "Major": 1,
+        "Nit": 0
+      },
+      "read_completion_reported": true,
+      "correction_verification": "passed",
+      "verification_mode": "focused_followup_same_reviewer_not_new_goldfish_round"
+    }
+  ],
+  "runtime_work_authorized": false
+}

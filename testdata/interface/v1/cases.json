@@ -1,0 +1,13 @@
+{
+ "init":["init","--storage-root","/vms"],
+ "up":["up","project","--no-profile"],
+ "start":["start"],"stop":["stop"],"restart":["restart"],"delete":["delete"],
+ "code":["code"],"ssh":["ssh"],"exec":["exec","--","true"],"forward":["forward","8080","--local","18080"],
+ "list":["list"],"inspect":["inspect"],"doctor":["doctor"],"logs":["logs"],
+ "environment.update":["environment","update"],"rebind":["rebind","--vm","11111111111111111111111111111111","--to","/project"],
+ "adopt":["adopt","--from-prototype","/prototype","--project","/prototype/project"],"repair":["repair"],
+ "profile.list":["profile","list"],"profile.show":["profile","show","work"],"profile.check":["profile","check","work"],
+ "profile.create":["profile","create","work"],"profile.import":["profile","import","work"],"profile.edit":["profile","edit","work"],"profile.apply":["profile","apply","work"],"profile.assign":["profile","assign","work","--vm","11111111111111111111111111111111"],"profile.unassign":["profile","unassign","--vm","11111111111111111111111111111111"],"profile.migrate-agent":["profile","migrate-agent","work"],"profile.unlock":["profile","unlock","work"],"profile.lock":["profile","lock","work"],"profile.forget":["profile","forget","work"],"profile.remove":["profile","remove","work"],
+ "operations.list":["operations","list"],"operations.inspect":["operations","inspect","11111111111111111111111111111111"],"operations.resume":["operations","resume","11111111111111111111111111111111"],
+ "state.backup":["state","backup"],"state.restore":["state","restore","/backup"],"state.migrate":["state","migrate"],"state.checkpoint":["state","checkpoint"],"state.inventory.refresh":["state","inventory","refresh"],"config.explain":["config","explain"],"storage.inspect":["storage","inspect"],"version":["version"]
+}

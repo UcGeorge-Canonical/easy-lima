@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-19",
+  "findings": [
+    "ELD-02",
+    "ELD-03",
+    "ELD-04",
+    "ELD-05"
+  ],
+  "status": "passed",
+  "checks": "Local links/anchors, Markdown structure, decision/status consistency, contract sections and protected review hashes",
+  "documents_checked": 12,
+  "local_links_checked": 198,
+  "tables_checked": 44,
+  "protected_review_files_unchanged": 45,
+  "author_decision_recorded": true,
+  "ELD_08_still_unapproved": true,
+  "remaining_counts": {
+    "Blocker": 0,
+    "Major": 7,
+    "Nit": 1
+  },
+  "independent_reaudit": false,
+  "runtime_tests_run": false,
+  "live_resources_changed": false,
+  "errors": [],
+  "document_hashes": {
+    "README.md": "d230ede49501c9cb6c9beda4e9627b2b7b18546e972b1c77d409f14f245d0859",
+    "FEATURES.md": "4dca77c015ed4a20ed184624a7022d12a2d0932b2b2f8f923055a2cab7898b72",
+    "concepts_brief.md": "c3dbdcd20b102d34ac01bcbcf8ca2021429e1ea6fea874fa64235f5affcd9d9a",
+    "UX_PROPOSAL.md": "19268997c087c71bb56f4a18d2459973fed16b55be8fcfc2dd63f196e6fa0ade",
+    "design_draft.md": "003df67b3a1bb0cf2fa22638d282b043eab66f124a88ac2cd40480a0dac99f62",
+    "PROFILE_TRANSITIONS.md": "de0678fd14aa6b7c22bc4b41dcd7e0c690e82c95cb46032711d9d169c3b8df69",
+    "ADOPTED_AGENTS.md": "62b9aa2beb268870dde608f28f5873f4bca9e25ad6d2e839673acdd7bf494f3d",
+    "LIMA_BOUNDARIES.md": "91772138c97b7d9e019f28ffe02805c440b9a6505da985368fec0619dc9ada96",
+    "consolidated_review_report.md": "0bc1ae01ca743dc990902bb94b8dc67bd0623b0132553f4954f906c7a1aa180d",
+    ".egm/reviews/2026-11-19-design-r1/resolutions/ELD-02/decision.md": "a97e6c586c7cb7770254df7fb290ce51b5d3f4d69a666b6a152644ee007da4c3",
+    ".egm/reviews/2026-11-19-design-r1/resolutions/ELD-03-05/decision.md": "b25fafaed3df7e5a3b6067d08aa4071ca51939c73850773c7bc88699a781c409",
+    ".egm/reviews/2026-11-19-design-r1/resolutions/ELD-08/proposal.md": "4c67fe4fdd0ea5515a98191fe0b27cc29e2470c0078648711e71541c672489f4"
+  }
+}

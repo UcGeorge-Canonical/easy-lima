@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-19",
+  "status": "passed",
+  "scope": "Documentation consistency only; no application tests or source fixture execution.",
+  "checks": {
+    "protected_artifacts": 63,
+    "json_files": 38,
+    "table_rows": 650,
+    "local_links": 255,
+    "toml_examples": 4,
+    "json_examples": 4,
+    "current_markdown_files": 26,
+    "applied_verified_findings": 4,
+    "remaining_findings": [],
+    "frozen_inputs": 16,
+    "fresh_reviewers_completed": 4
+  },
+  "errors": [],
+  "independent_targeted_reaudit": true,
+  "focused_correction_verification": true,
+  "two_round_convergence": false,
+  "runtime_tests": false,
+  "live_resources_accessed": false,
+  "protected_history_unchanged": true
+}

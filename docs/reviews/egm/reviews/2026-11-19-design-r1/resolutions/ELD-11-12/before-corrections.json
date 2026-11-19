@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-19",
+  "authority": "Standing internal-choice delegation and explicit author approval of ELD-01, ELD-02 and ELD-08.",
+  "applied": [
+    "ELD-06",
+    "ELD-07",
+    "ELD-16",
+    "ELD-17",
+    "ELD-18",
+    "ELD-19",
+    "ELD-01",
+    "ELD-02",
+    "ELD-03",
+    "ELD-04",
+    "ELD-05",
+    "ELD-08",
+    "ELD-09",
+    "ELD-10",
+    "ELD-13",
+    "ELD-14",
+    "ELD-15"
+  ],
+  "scope": "Seventeen applied findings: six earlier editorial corrections plus eleven substantive/organizational design corrections. ELD-11/ELD-12 are drafted for author review, not approved. No implementation or live-resource changes.",
+  "independently_reaudited": false,
+  "editorial_fixes": [
+    "ELD-06",
+    "ELD-07",
+    "ELD-16",
+    "ELD-17",
+    "ELD-18",
+    "ELD-19"
+  ],
+  "approved_design_resolutions": [
+    "ELD-01",
+    "ELD-02",
+    "ELD-08"
+  ],
+  "delegated_design_resolutions": [
+    "ELD-03",
+    "ELD-04",
+    "ELD-05",
+    "ELD-09",
+    "ELD-10",
+    "ELD-13",
+    "ELD-14",
+    "ELD-15"
+  ]
+}
